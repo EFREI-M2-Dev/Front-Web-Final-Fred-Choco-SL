@@ -1,0 +1,27 @@
+<section id="login">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="logo">
+      <app-svg src="/assets/logo.svg"></app-svg>
+      <span>Todoum</span>
+    </div>
+    <input
+      type="text"
+      formControlName="username"
+      placeholder="Username"
+    />
+    <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+      <small>Username is required.</small>
+    </div>
+
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+    />
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      <small>Password is required and must be at least 6 characters long.</small>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</section>
