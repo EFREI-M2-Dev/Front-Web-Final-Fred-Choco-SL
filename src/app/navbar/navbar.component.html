@@ -1,0 +1,37 @@
+<nav [ngClass]="{ 'home-navbar': isHomePage, 'default-navbar': !isHomePage }">
+  <div class="navbar-content">
+    <div class="navbar-content__left">
+      <div class="logo">
+        <img src="assets/logo.svg" alt="Logo">
+        <span>Todoum</span>
+      </div>
+
+      <div class="navbar-links" *ngIf="!isHomePage">
+        <a href="#">Accueil</a>
+        <a href="#">Activité récente</a>
+        <a href="#">Aide</a>
+      </div>
+    </div>
+
+    <div class="navbar-actions">
+      <app-button
+        *ngIf="isHomePage"
+        label="Se connecter"
+        background="secondary"
+        text="primary"
+      ></app-button>
+      <app-button
+        *ngIf="isHomePage"
+        label="S'inscrire"
+        background="primary"
+        text="secondary"
+      ></app-button>
+      <app-button
+        *ngIf="!isHomePage"
+        label="Se déconnecter"
+        background="primary"
+        text="secondary"
+      ></app-button>
+    </div>
+  </div>
+</nav>
