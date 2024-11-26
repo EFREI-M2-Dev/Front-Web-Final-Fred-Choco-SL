@@ -1,5 +1,37 @@
 /* Styles généraux pour la navbar */
-nav {
+.navbar {
+  width: 100%;
+  background-color: transparent;
+
+  &.home {
+    color: var(--mat-sys-on-primary);
+
+    .navbar-links a {
+      color: var(--mat-sys-on-primary);
+    }
+  }
+
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .left-part {
+      .logo {
+        img {
+          width: 1.25rem;
+          height: 1.25rem;
+        }
+      }
+    }
+  }
+
+  .navbar-links a {
+    color: var(--mat-sys-on-background);
+  }
+}
+
+/*nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,34 +82,5 @@ nav {
   button {
     margin-left: 10px;
   }
-}
+}*/
 
-/* Navbar pour la page d'accueil */
-.home-navbar {
-  background-color: #4d3b7d;  // Couleur personnalisée pour la navbar home
-  color: white;
-
-  .navbar-links a {
-    color: white;
-  }
-
-  .navbar-actions button {
-    background-color: white;
-    color: #4d3b7d;
-  }
-}
-
-/* Navbar pour les autres pages */
-.default-navbar {
-  background-color: #e8e6ee;  // Couleur différente pour les autres pages
-  color: #4d3b7d;
-
-  .navbar-links a {
-    color: #4d3b7d;
-  }
-
-  .navbar-actions button {
-    background-color: #4d3b7d;
-    color: white;
-  }
-}
