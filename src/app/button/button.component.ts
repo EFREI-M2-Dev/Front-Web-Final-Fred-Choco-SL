@@ -7,7 +7,16 @@ import {Component, Input} from '@angular/core';
 })
 export class ButtonComponent {
   @Input() label: string = 'Bouton'; // Texte du bouton
-  @Input() color: 'primary' | 'accent' | 'warn' = 'primary'; // Couleur
+  @Input() background: 'primary' | 'secondary' = 'primary'; // Couleur
+  @Input() text: 'primary' | 'secondary' = 'secondary';
   @Input() type: 'basic' | 'raised' | 'stroked' | 'flat' | 'icon' = 'basic'; // Type de bouton
   @Input() disabled: boolean = false; // Désactiver le bouton
+
+  getBackgroundClass(): string {
+    return `background-${this.background}`;
+  }
+
+  getTextClass(): string {
+    return `text-${this.text}`;
+  }
 }

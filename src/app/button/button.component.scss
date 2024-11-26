@@ -1,3 +1,21 @@
+@import "../../styles";
+
 button {
   border-radius: 100px;
+}
+
+.background-primary {
+  background-color: map-get($my-palette, 400) !important;
+}
+
+.background-secondary {
+  background-color: map-get($my-palette, 50) !important;
+}
+
+.text-primary {
+  color: map-get($my-palette, 400) !important;
+}
+
+.text-secondary {
+  color: map-get($my-palette, 50) !important;
 }
