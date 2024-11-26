@@ -20,9 +20,9 @@ $my-palette: (
   )
 );
 
-$my-app-primary: mat.define-palette($my-palette, 400);
+$my-app-primary: mat.m2-define-palette($my-palette, 400);
 
-$my-app-theme: mat.define-light-theme((
+$my-app-theme: mat.m2-define-light-theme((
   color: (
     primary: $my-app-primary,
     accent: $my-app-primary,
