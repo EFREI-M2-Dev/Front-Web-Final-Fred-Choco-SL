@@ -2,7 +2,8 @@
 @use 'media-breakpoints' as bp;
 @use 'sass:map';
 
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 $my-palette: (
   50: #e8e6ee,
