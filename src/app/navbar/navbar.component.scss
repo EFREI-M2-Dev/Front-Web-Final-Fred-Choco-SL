@@ -1,0 +1,83 @@
+/* Styles généraux pour la navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-content__left {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  span {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}
+
+.navbar-links {
+  a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1em;
+  }
+}
+
+.navbar-actions {
+  display: flex;
+  gap: 1em;
+  button {
+    margin-left: 10px;
+  }
+}
+
+/* Navbar pour la page d'accueil */
+.home-navbar {
+  background-color: #4d3b7d;  // Couleur personnalisée pour la navbar home
+  color: white;
+
+  .navbar-links a {
+    color: white;
+  }
+
+  .navbar-actions button {
+    background-color: white;
+    color: #4d3b7d;
+  }
+}
+
+/* Navbar pour les autres pages */
+.default-navbar {
+  background-color: #e8e6ee;  // Couleur différente pour les autres pages
+  color: #4d3b7d;
+
+  .navbar-links a {
+    color: #4d3b7d;
+  }
+
+  .navbar-actions button {
+    background-color: #4d3b7d;
+    color: white;
+  }
+}
