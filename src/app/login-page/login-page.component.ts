@@ -21,9 +21,8 @@ export class LoginPageComponent {
   // Méthode pour gérer la soumission du formulaire
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Form data:', this.loginForm.value);
-    } else {
-      console.error('Form is invalid');
+      const [username, password] = this.loginForm.value;
+      // call axios /api/login
     }
   }
 }
