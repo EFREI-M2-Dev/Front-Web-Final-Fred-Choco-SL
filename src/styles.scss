@@ -1,4 +1,6 @@
 @use '@angular/material' as mat;
+@use 'media-breakpoints' as bp;
+@use 'sass:map';
 
 @include mat.core();
 
@@ -13,7 +15,6 @@ $my-palette: (
   700: #3d2f6f,
   800: #342965,
   900: #251e58,
-
   contrast: (
     50: rgba(black, 0.87)
   )
@@ -32,5 +33,41 @@ $my-app-theme: mat.define-light-theme((
 @include mat.all-component-themes($my-app-theme);
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @include bp.media-breakpoint-up(sm) {
+    max-width: map.get(bp.$container-max-widths, sm);
+  }
+
+  @include bp.media-breakpoint-up(md) {
+    max-width: map.get(bp.$container-max-widths, md);
+  }
+
+  @include bp.media-breakpoint-up(lg) {
+    max-width: map.get(bp.$container-max-widths, lg);
+  }
+
+  @include bp.media-breakpoint-up(xl) {
+    max-width: map.get(bp.$container-max-widths, xl);
+  }
+
+  @include bp.media-breakpoint-up(xxl) {
+    max-width: map.get(bp.$container-max-widths, xxl);
+  }
+}
