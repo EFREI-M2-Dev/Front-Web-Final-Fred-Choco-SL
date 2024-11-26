@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-svg',
-  template: `
+    selector: 'app-svg',
+    template: `
     <ng-container *ngIf="src; else defaultSvg">
       <div [innerHTML]="svgContent" [class]="class"></div>
     </ng-container>
@@ -23,7 +23,8 @@ import { Component, Input } from '@angular/core';
       </svg>
     </ng-template>
   `,
-  styleUrls: ['./svg.component.scss']
+    styleUrls: ['./svg.component.scss'],
+    standalone: false
 })
 export class SvgComponent {
   @Input() src?: string; // Chemin du fichier SVG
