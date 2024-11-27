@@ -1,5 +1,5 @@
 /* Conteneur principal */
-#login {
+#register {
   display          : flex;
   justify-content  : center;
   align-items      : center;
@@ -7,7 +7,7 @@
   background-color : #F8F3FC; /* Couleur de fond légèrement violette */
 }
 
-#login form {
+#register form {
   background-color : #FFFFFF; /* Fond blanc */
   border-radius    : 16px; /* Bords arrondis */
   padding          : 40px;
@@ -21,7 +21,7 @@
 }
 
 /* Logo ou titre */
-#login form h1 {
+#register form h1 {
   font-size     : 24px;
   font-weight   : bold;
   margin-bottom : 20px;
@@ -29,7 +29,7 @@
 }
 
 /* Input fields */
-#login form input {
+#register form input {
   width            : 100%;
   background-color : #EEE6F5; /* Couleur de fond des inputs */
   border           : none;
@@ -41,13 +41,13 @@
   position         : relative;
 }
 
-#login form input:focus {
+#register form input:focus {
   outline    : none;
   box-shadow : 0 0 0 2px #BB93DD; /* Effet focus violet */
 }
 
 /* Icônes de suppression (simulées avec positionnement absolu) */
-#login form input + span {
+#register form input + span {
   position  : absolute;
   right     : 20px;
   top       : 50%;
@@ -58,7 +58,7 @@
 }
 
 /* Bouton */
-#login form button {
+#register form button {
   background-color : #6E44E5; /* Couleur violette */
   color            : white;
   border           : none;
@@ -71,12 +71,12 @@
   font-weight      : bold;
 }
 
-#login form button:hover {
+#register form button:hover {
   background-color : #5A38B5; /* Effet de survol */
 }
 
 /* Lien */
-#login form a {
+#register form a {
   display         : block;
   margin-top      : 16px;
   color           : #6E44E5;
@@ -84,7 +84,7 @@
   font-size       : 14px;
 }
 
-#login form a:hover {
+#register form a:hover {
   text-decoration : underline;
 }
 

@@ -11,6 +11,10 @@ import {LoginPageComponent} from './login-page/login-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {SvgComponent} from './svg/svg.component';
 import {IndexComponent} from "./index/index.component";
+import {AngularSvgIconModule, SvgIconComponent} from 'angular-svg-icon';
+import {HTTP_INTERCEPTORS, provideHttpClient} from "@angular/common/http";
+import {RegisterPageComponent} from "./register-page/register-page.component";
+import {AuthInterceptor} from "./Auth/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -19,16 +23,26 @@ import {IndexComponent} from "./index/index.component";
     NavbarComponent,
     LoginPageComponent,
     SvgComponent,
-    IndexComponent
+    IndexComponent,
+    RegisterPageComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        ReactiveFormsModule,
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    SvgIconComponent,
+    AngularSvgIconModule.forRoot()
+  ],
+  providers: [
+    provideHttpClient(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
