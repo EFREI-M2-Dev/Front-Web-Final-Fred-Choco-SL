@@ -10,4 +10,11 @@
   h3 {
     font: var(--mat-sys-headline-large);
   }
+
+  .projects-cards {
+    // 4 columns on desktop
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 1rem;
+  }
 }

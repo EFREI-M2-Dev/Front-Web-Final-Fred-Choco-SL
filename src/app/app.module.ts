@@ -17,6 +17,7 @@ import {AuthInterceptor} from "./Auth/auth.interceptor";
 import {AvatarComponent} from "./avatar/avatar.component";
 import {HeaderComponent} from "./header/header.component";
 import {ProjectsComponent} from "./projects/projects.component";
+import {ProjectCardComponent} from "./project-card/project-card.component";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {ProjectsComponent} from "./projects/projects.component";
     MatButtonModule,
     ReactiveFormsModule,
     SvgIconComponent,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
+    ProjectCardComponent
   ],
   providers: [
     provideHttpClient(),

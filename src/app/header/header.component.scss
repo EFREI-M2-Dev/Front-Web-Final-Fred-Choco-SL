@@ -1,16 +1,26 @@
-.header-container {
-  display: flex;
-  align-items: center;
+.page-header {
+  background-color: var(--mat-sys-on-primary-fixed-variant);
+  color: var(--mat-sys-on-primary);
+
+  .first-section {
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+
+    .header-text {
+      margin-left: 20px;
+
+      .headerTopLine {
+        margin: 0;
+      }
+
+      .headerTitle {
+        font: var(--mat-sys-display-small);
+        margin: 0;
+      }
+    }
+  }
+
+
 }
 
-.header-text {
-  margin-left: 20px;
-}
-
-.headerTopLine {
-  margin-bottom: 0;
-}
-
-.headerTitle {
-  margin-top: 10px;
-}
