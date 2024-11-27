@@ -15,6 +15,7 @@ import {HTTP_INTERCEPTORS, provideHttpClient} from "@angular/common/http";
 import {RegisterPageComponent} from "./register-page/register-page.component";
 import {AuthInterceptor} from "./Auth/auth.interceptor";
 import {AvatarComponent} from "./avatar/avatar.component";
+import {HeaderComponent} from "./header/header.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AvatarComponent} from "./avatar/avatar.component";
     LoginPageComponent,
     IndexComponent,
     RegisterPageComponent,
-    AvatarComponent
+    AvatarComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
