@@ -17,6 +17,7 @@ export class AuthService {
   private loadAuthFromStorage() {
     const token = localStorage.getItem('token');
     const userDisplayName = localStorage.getItem('userDisplayName');
+
     if (token && userDisplayName) {
       const [name, surname] = userDisplayName.split('&&');
       const user: User = { id: 0, email: '', name, surname, password: '', createdAt: '', updatedAt: '' };

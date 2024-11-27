@@ -1,7 +1,14 @@
 <section class="container header-container">
   <div class="header-icon">
-    <svg-icon *ngIf="isLoggedIn$" src="assets/logo.svg" [svgStyle]="{'width': '48px', 'height': '48px'}"></svg-icon>
-    <app-avatar *ngIf="!isLoggedIn$"></app-avatar>
+    <svg-icon
+      *ngIf="!(isLoggedIn$ | async)"
+      src="assets/logo.svg"
+      [svgStyle]="{'width': '48px', 'height': '48px'}">
+    </svg-icon>
+    <app-avatar
+      *ngIf="isLoggedIn$ | async"
+      >
+    </app-avatar>
   </div>
   <div class="header-text">
     <p class="headerTopLine">{{ headerTopLine }}</p>
