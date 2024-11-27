@@ -4,8 +4,17 @@
   justify-content  : center;
   align-items      : center;
   height           : 100vh;
-  background-color : #F8F3FC; /* Couleur de fond légèrement violette */
+  background-color : var(--mat-sys-on-primary-fixed-variant); /* Couleur de fond légèrement violette */
 }
+
+#login form .logo {
+  color : var(--mat-sys-on-primary-fixed-variant);
+}
+
+#login form small {
+  color : var(--mat-sys-error);
+}
+
 
 #login form {
   background-color : #FFFFFF; /* Fond blanc */
@@ -17,7 +26,6 @@
   gap              : 1em;
 
   box-shadow       : 0 8px 24px rgba(0, 0, 0, 0.1); /* Ombre légère */
-  text-align       : center; /* Centrer le texte */
 }
 
 /* Logo ou titre */
