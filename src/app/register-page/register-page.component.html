@@ -1,0 +1,65 @@
+<section id="register">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="logo">
+      <svg-icon src="assets/logo.svg"></svg-icon>
+      <span>Register</span>
+    </div>
+
+    <!-- Surname Field -->
+    <input
+      type="text"
+      formControlName="surname"
+      placeholder="Surname"
+    />
+    <div *ngIf="registerForm.get('surname')?.invalid && registerForm.get('surname')?.touched">
+      <small>Surname is required and must be at least 2 characters long.</small>
+    </div>
+
+    <!-- Name Field -->
+    <input
+      type="text"
+      formControlName="name"
+      placeholder="Name"
+    />
+    <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+      <small>Name is required and must be at least 2 characters long.</small>
+    </div>
+
+    <!-- Email Field -->
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Email"
+    />
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+      <small>Email is required and must be a valid email address.</small>
+    </div>
+
+    <!-- Password Field -->
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+    />
+    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+      <small>Password is required and must be at least 6 characters long.</small>
+    </div>
+
+    <!-- Confirm Password Field -->
+    <input
+      type="password"
+      formControlName="confirmPassword"
+      placeholder="Confirm Password"
+    />
+    <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+      <small>Confirm Password is required and must match the password.</small>
+    </div>
+
+    <!-- Password Mismatch -->
+    <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.dirty">
+      <small>Passwords do not match.</small>
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+</section>
