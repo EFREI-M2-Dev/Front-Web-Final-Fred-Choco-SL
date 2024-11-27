@@ -1,6 +1,58 @@
 <div class="intro-wrapper">
+  <div class="background">
+    <svg width="1920" height="752" viewBox="0 0 1920 752" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="24.6387" y="645.422" width="77" height="77" rx="8" transform="rotate(18.6619 24.6387 645.422)"
+            fill="#6750A4"/>
+      <rect x="317.302" y="645.945" width="54.717" height="54.717" rx="8" transform="rotate(-8.60808 317.302 645.945)"
+            fill="#6750A4"/>
+      <rect x="435.858" y="672.137" width="54.717" height="54.717" rx="8" transform="rotate(0.149588 435.858 672.137)"
+            fill="#6750A4"/>
+      <rect x="896.709" y="634.627" width="68.836" height="68.836" rx="8" transform="rotate(-16.5554 896.709 634.627)"
+            fill="#6750A4"/>
+      <rect x="154.578" y="181.717" width="35.4349" height="35.4349" rx="8" transform="rotate(-30 154.578 181.717)"
+            fill="#6750A4"/>
+      <rect x="15.8544" y="205.422" width="34.211" height="34.211" rx="8" transform="rotate(15 15.8544 205.422)"
+            fill="#6750A4"/>
+      <rect x="207.598" y="661.422" width="41.1616" height="41.1616" rx="8" transform="rotate(9.2242 207.598 661.422)"
+            fill="#6750A4"/>
+      <rect x="71.3119" y="455.422" width="136.76" height="136.76" rx="8" transform="rotate(9.38957 71.3119 455.422)"
+            fill="#6750A4"/>
+      <circle cx="107.5" cy="281.922" r="21.5" fill="#6750A4"/>
+      <circle cx="148.5" cy="671.922" r="12.5" fill="#6750A4"/>
+      <circle cx="169.5" cy="412.922" r="12.5" fill="#6750A4"/>
+      <circle cx="481.5" cy="624.922" r="12.5" fill="#6750A4"/>
+      <path
+        d="M686.217 646.187C690.362 641.632 697.883 643.272 699.756 649.139L705.849 668.233C707.722 674.1 702.541 679.794 696.524 678.482L676.941 674.212C670.924 672.9 668.583 665.567 672.728 661.012L686.217 646.187Z"
+        fill="#6750A4"/>
+      <path
+        d="M255.832 597.113C256.829 591.035 264.031 588.317 268.796 592.219L284.301 604.92C289.065 608.822 287.818 616.419 282.057 618.593L263.305 625.671C257.543 627.846 251.588 622.968 252.586 616.891L255.832 597.113Z"
+        fill="#6750A4"/>
+      <path
+        d="M53.8133 356.107C57.958 351.552 65.4793 353.192 67.3516 359.059L82.6223 406.909C84.4946 412.776 79.3137 418.47 73.2967 417.158L24.2219 406.457C18.2048 405.145 15.8644 397.812 20.0091 393.257L53.8133 356.107Z"
+        fill="#6750A4"/>
+    </svg>
+  </div>
   <app-navbar [isHomePage]="true"></app-navbar>
   <div class="container">
-    Lorem ipsum
+    <div class="headlines">
+      <h1>Organisez votre quotidien</h1>
+      <p>Optez pour la simplicité et choisissez Todoum</p>
+    </div>
+    <div class="actions">
+      <app-button
+        label="Se connecter"
+        color="secondary"
+        text="primary"
+        type="flat"
+        (onClick)="hanldeClick($event, 'login')"
+      ></app-button>
+      <app-button
+        label="S'inscrire"
+        color="primary"
+        text="secondary"
+        type="flat"
+        (onClick)="hanldeClick($event, 'register')"
+      ></app-button>
+    </div>
   </div>
 </div>

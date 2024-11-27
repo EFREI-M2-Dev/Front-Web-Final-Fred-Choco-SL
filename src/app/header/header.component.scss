@@ -1,13 +1,26 @@
-@import "../../styles";
+.page-header {
+  background-color: var(--mat-sys-on-primary-fixed-variant);
+  color: var(--mat-sys-on-primary);
 
-section.header-container {
-  background-color: map-get($my-palette, 400) !important;
-  color: white;
-  display: flex;
-  align-items: center;
+  .first-section {
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+
+    .header-text {
+      margin-left: 20px;
+
+      .headerTopLine {
+        margin: 0;
+      }
+
+      .headerTitle {
+        font: var(--mat-sys-display-small);
+        margin: 0;
+      }
+    }
+  }
+
 
 }
 
-.header-icon img {
-  height: 50px;
-}
