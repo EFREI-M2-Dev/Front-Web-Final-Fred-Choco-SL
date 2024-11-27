@@ -1,0 +1,21 @@
+.tab {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  gap: 8px;
+  color: #6a1b9a;
+  background-color: #f8f1fc;
+  transition: all 0.3s ease;
+
+  &.active {
+    background-color: #6a1b9a;
+    color: white;
+  }
+
+  mat-icon {
+    font-size: 20px;
+  }
+}
