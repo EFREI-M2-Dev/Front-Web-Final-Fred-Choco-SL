@@ -10,12 +10,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TabsComponent } from './tabs/tabs.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatIconModule} from "@angular/material/icon";
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
     NavbarComponent,
+    HeaderComponent,
     TabsComponent
   ],
   imports: [
@@ -23,8 +25,8 @@ import {MatIconModule} from "@angular/material/icon";
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatIconModule,
     MatTabsModule,
-    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
