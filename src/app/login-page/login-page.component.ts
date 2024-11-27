@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import {SvgIconComponent} from "angular-svg-icon";
 
 
-interface User {
+export interface User {
   id: number,
   email: string,
   name: string,
@@ -21,10 +22,10 @@ interface LoginResponse {
 
 
 @Component({
-    selector: 'app-login-page',
-    templateUrl: './login-page.component.html',
-    styleUrls: ['./login-page.component.scss'],
-    standalone: false
+  selector: 'app-login-page',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.scss'],
+  standalone: false,
 })
 export class LoginPageComponent {
   loginForm: FormGroup;
@@ -48,9 +49,7 @@ export class LoginPageComponent {
         next: (response) => {
           console.log('Login successful:', response);
           const { token, user } = response;
-          const fullName = `${user.name} ${user.surname}`;
-          window.localStorage.setItem('token', token);
-          window.localStorage.setItem('userDisplayName', fullName);
+          addloginToStorage(token, user);
         },
         error: (error) => {
           console.error('Login failed:', error);
@@ -58,4 +57,10 @@ export class LoginPageComponent {
       });
     }
   }
+}
+
+export const addloginToStorage = (token: string, user: User) => {
+  const fullName = `${user.name} ${user.surname}`;
+  window.localStorage.setItem('token', token);
+  window.localStorage.setItem('userDisplayName', fullName);
 }

@@ -9,8 +9,9 @@ import {ButtonComponent} from "./button/button.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { AngularSvgIconModule } from 'angular-svg-icon';
+import {AngularSvgIconModule, SvgIconComponent} from 'angular-svg-icon';
 import {provideHttpClient} from "@angular/common/http";
+import {RegisterPageComponent} from "./register-page/register-page.component";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {provideHttpClient} from "@angular/common/http";
     ButtonComponent,
     NavbarComponent,
     LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import {provideHttpClient} from "@angular/common/http";
     BrowserAnimationsModule,
     MatButtonModule,
     ReactiveFormsModule,
+    SvgIconComponent,
     AngularSvgIconModule.forRoot()
   ],
   providers: [provideHttpClient()],
