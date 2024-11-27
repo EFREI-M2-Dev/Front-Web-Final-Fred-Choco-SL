@@ -9,6 +9,10 @@
   background-color: var(--mat-sys-surface-container);
   box-shadow: 0 0 .25rem 0 rgba(0, 0, 0, 0.25);
 
+  .title {
+    user-select: none;
+  }
+
   .tasks-wrapper {
     flex-grow: 1;
     display: flex;
