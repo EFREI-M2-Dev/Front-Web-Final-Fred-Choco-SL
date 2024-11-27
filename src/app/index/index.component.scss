@@ -1,17 +1,51 @@
-@use '@angular/material' as mat;
-
-/*html {
-  color-scheme: light dark;
-  @include mat.theme((
-    color: mat.$violet-palette,
-    typography: Roboto,
-    density: 0
-  ));
-}
-
 .intro-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 47rem;
-  background-color: var(--mat-sys-on-primary-container);
-  background-color: mat-theme.on-primary;
-}*/
+  background-color: var(--mat-sys-on-primary-fixed-variant);
+  color: var(--mat-sys-on-primary);
+
+  .background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    svg {
+      rect, circle, path {
+        fill: var(--mat-sys-surface-tint);
+      }
+    }
+  }
+
+  .container {
+    z-index: 10;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6rem;
+
+    .headlines {
+      h1 {
+        font: var(--mat-sys-display-large);
+        margin: 0;
+      }
+
+      p {
+        font: var(--mat-sys-headline-small);
+        margin: 0;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: .5rem;
+    }
+  }
+}

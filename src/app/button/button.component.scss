@@ -2,9 +2,21 @@
 
 button {
   border-radius: 100px;
+
+  // Check ce post: https://stackoverflow.com/a/48015134/12680199
+  // Angular créé un style custom lorsqu'on ajoute l'attribut 'color="couleur"'
+  &.mat-primary {
+    background-color: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
+  }
+
+  &.mat-tonal {
+    background-color: var(--mat-sys-secondary-container);
+    color: var(--mat-sys-on-secondary-container);
+  }
 }
 
-.background-primary {
+/*.background-primary {
   background-color: map-get($my-palette, 400) !important;
 }
 
@@ -18,4 +30,5 @@ button {
 
 .text-secondary {
   color: map-get($my-palette, 50) !important;
-}
+}*/
+
