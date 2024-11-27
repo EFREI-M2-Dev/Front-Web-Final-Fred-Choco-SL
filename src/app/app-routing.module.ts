@@ -4,6 +4,7 @@ import {IndexComponent} from "./index/index.component";
 import {LoginPageComponent} from './login-page/login-page.component';
 import {RegisterPageComponent} from "./register-page/register-page.component";
 import {ProjectsComponent} from "./projects/projects.component";
+import {BoardComponent} from "./board/board.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectsComponent
+  },
+  {
+    path: 'board/:id',
+    component: BoardComponent
   }
 ];
 
