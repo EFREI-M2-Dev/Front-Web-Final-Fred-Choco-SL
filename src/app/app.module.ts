@@ -21,6 +21,8 @@ import {ProjectCardComponent} from "./project-card/project-card.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatIcon} from "@angular/material/icon";
 import {TabComponent} from "./tab/tab.component";
+import {BoardComponent} from "./board/board.component";
+import {BoardColumnComponent} from "./board-column/board-column.component";
 import {RouterModule} from "@angular/router";
 import {LoaderComponent} from "./loader/loader.component";
 
@@ -40,6 +42,8 @@ import {LoaderComponent} from "./loader/loader.component";
     HeaderComponent,
     TabComponent,
     ProjectsComponent,
+    BoardComponent,
+    ProjectsComponent,
     LoaderComponent
   ],
   imports: [
@@ -54,7 +58,9 @@ import {LoaderComponent} from "./loader/loader.component";
     ProjectCardComponent,
     ProjectCardComponent,
     MatTabsModule,
-    MatIcon
+    MatIcon,
+    ProjectCardComponent,
+    BoardColumnComponent
   ],
   providers: [
     provideHttpClient(),
