@@ -9,7 +9,6 @@ import {ButtonComponent} from "./button/button.component";
 import {NavbarComponent} from './navbar/navbar.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {SvgComponent} from './svg/svg.component';
 import {IndexComponent} from "./index/index.component";
 import {AngularSvgIconModule, SvgIconComponent} from 'angular-svg-icon';
 import {HTTP_INTERCEPTORS, provideHttpClient} from "@angular/common/http";
@@ -22,7 +21,6 @@ import {AuthInterceptor} from "./Auth/auth.interceptor";
     ButtonComponent,
     NavbarComponent,
     LoginPageComponent,
-    SvgComponent,
     IndexComponent,
     RegisterPageComponent
   ],
