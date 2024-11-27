@@ -1,8 +1,5 @@
 <div class="intro-wrapper">
-  <div class="background">
-    <svg-icon src="assets/hero.svg" class="hero-svg"></svg-icon>
-  </div>
-  <app-navbar [isHomePage]="true"></app-navbar>
+  <app-navbar class="navbar" [isHomePage]="true"></app-navbar>
   <div class="container">
     <div class="headlines">
       <h1>Organisez votre quotidien</h1>
@@ -24,5 +21,9 @@
         (onClick)="hanldeClick($event, 'register')"
       ></app-button>
     </div>
+    <div class="background">
+      <svg-icon src="assets/hero.svg" class="icon-svg"></svg-icon>
+    </div>
   </div>
+
 </div>

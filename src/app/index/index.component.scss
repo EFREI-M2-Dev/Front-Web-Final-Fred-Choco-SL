@@ -7,6 +7,9 @@
   background-color: var(--mat-sys-on-primary-fixed-variant);
   color: var(--mat-sys-on-primary);
 
+  .navbar {
+    z-index: 20;
+  }
   .background {
     position: absolute;
     bottom: 0;
@@ -31,8 +34,10 @@
     flex-direction: column;
     justify-content: center;
     gap: 6rem;
+    overflow: hidden;
 
     .headlines {
+      z-index: 5;
       h1 {
         font: var(--mat-sys-display-large);
         margin: 0;
@@ -45,6 +50,7 @@
     }
 
     .actions {
+      z-index: 5;
       display: flex;
       gap: .5rem;
     }
