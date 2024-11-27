@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { addloginToStorage, User } from '../login-page/login-page.component';
+import {AuthService} from "../Auth/auth.service";
 
 interface RegisterResponse {
   message: string;
@@ -19,7 +20,7 @@ export class RegisterPageComponent {
   registerForm: FormGroup;
   apiUrl = 'http://localhost:3000/api/register';
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private authService: AuthService) {
     this.registerForm = this.formBuilder.group(
       {
         surname: ['', [Validators.required, Validators.minLength(2)]],
@@ -52,9 +53,8 @@ export class RegisterPageComponent {
 
       this.http.post<RegisterResponse>(this.apiUrl, { surname, name, email, password }).subscribe({
         next: (response) => {
-          console.log('Registration successful:', response);
           const { token, user } = response;
-          addloginToStorage(token, user);
+          this.authService.login(token, user);
         },
         error: (error) => {
           console.error('Registration failed:', error);

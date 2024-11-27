@@ -10,8 +10,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AngularSvgIconModule, SvgIconComponent} from 'angular-svg-icon';
-import {provideHttpClient} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, provideHttpClient} from "@angular/common/http";
 import {RegisterPageComponent} from "./register-page/register-page.component";
+import {AuthInterceptor} from "./Auth/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,14 @@ import {RegisterPageComponent} from "./register-page/register-page.component";
     SvgIconComponent,
     AngularSvgIconModule.forRoot()
   ],
-  providers: [provideHttpClient()],
+  providers: [
+    provideHttpClient(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

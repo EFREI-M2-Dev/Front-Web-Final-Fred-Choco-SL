@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {SvgIconComponent} from "angular-svg-icon";
-
+import {AuthService} from "../Auth/auth.service";
 
 export interface User {
   id: number,
@@ -32,7 +31,7 @@ export class LoginPageComponent {
   apiUrl = 'http://localhost:3000/api/login';
 
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private authService: AuthService) {
     // Initialisation du formulaire avec FormBuilder
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]], // Champ requis pour l'email avec email
@@ -49,7 +48,7 @@ export class LoginPageComponent {
         next: (response) => {
           console.log('Login successful:', response);
           const { token, user } = response;
-          addloginToStorage(token, user);
+          this.authService.login(token, user);
         },
         error: (error) => {
           console.error('Login failed:', error);
