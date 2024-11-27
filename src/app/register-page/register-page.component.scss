@@ -1,65 +1,77 @@
 #register {
   display          : flex;
-  justify-content  : center;
+  justify-content  : flex-start;
   align-items      : center;
   flex-direction   : column;
   height           : 100vh;
+  width            : 100%;
   background-color : var(--mat-sys-on-primary-fixed-variant); /* Couleur de fond légèrement violette */
-}
 
-#register form .logo {
-  color : var(--mat-sys-on-primary-fixed-variant);
-}
-
-#register form small {
-  color : var(--mat-sys-error);
-}
-
-#register form {
-  background-color : #FFFFFF; /* Fond blanc */
-  border-radius    : 16px; /* Bords arrondis */
-  padding          : 40px;
-  width            : 350px;
-  display          : flex;
-  flex-direction   : column;
-  gap              : 1em;
-  box-shadow       : 0 8px 24px rgba(0, 0, 0, 0.4); /* Ombre légère */
-}
+  .navbar {
+    width : 100%;
+  }
 
 
-/* Input fields */
-#register form input {
-  width            : 100%;
-  background-color : #EEE6F5; /* Couleur de fond des inputs */
-  border           : none;
-  border-radius    : 8px;
-  padding          : 12px;
-  font-size        : 16px;
-  color            : #5C4B68;
-  position         : relative;
-}
+  .container {
+    flex            : 1;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
 
-#register form input:focus {
-  outline    : none;
-  box-shadow : 0 0 0 2px #BB93DD; /* Effet focus violet */
-}
 
-/* Bouton */
-#register form button {
-  background-color : #6E44E5; /* Couleur violette */
-  color            : white;
-  border           : none;
-  border-radius    : 8px;
-  padding          : 12px;
-  width            : 100%;
-  font-size        : 16px;
-  cursor           : pointer;
-  margin-top       : 16px;
-  font-weight      : bold;
-}
+    form {
+      background-color : #FFFFFF; /* Fond blanc */
+      border-radius    : 16px; /* Bords arrondis */
+      padding          : 40px;
+      width            : 350px;
+      display          : flex;
+      flex-direction   : column;
+      gap              : 1em;
+      box-shadow       : 0 8px 24px rgba(0, 0, 0, 0.4); /* Ombre légère */
 
-#register form button:hover {
-  background-color : #5A38B5; /* Effet de survol */
+      .logo {
+        color : var(--mat-sys-on-primary-fixed-variant);
+      }
+
+      small {
+        color : var(--mat-sys-error);
+      }
+
+      input {
+        width            : 100%;
+        background-color : #EEE6F5; /* Couleur de fond des inputs */
+        border           : none;
+        border-radius    : 8px;
+        padding          : 12px;
+        font-size        : 16px;
+        color            : #5C4B68;
+        position         : relative;
+
+        &:focus {
+          outline    : none;
+          box-shadow : 0 0 0 2px #BB93DD; /* Effet focus violet */
+        }
+      }
+
+      button {
+        background-color : #6E44E5; /* Couleur violette */
+        color            : white;
+        border           : none;
+        border-radius    : 8px;
+        padding          : 12px;
+        width            : 100%;
+        font-size        : 16px;
+        cursor           : pointer;
+        margin-top       : 16px;
+        font-weight      : bold;
+
+        &:hover {
+          background-color : #5A38B5; /* Effet de survol */
+        }
+      }
+
+    }
+  }
 }
 
 .logo {
