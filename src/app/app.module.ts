@@ -19,6 +19,8 @@ import {ProjectCardComponent} from "./project-card/project-card.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatIconModule} from "@angular/material/icon";
 import {TabComponent} from "./tab/tab.component";
+import {BoardComponent} from "./board/board.component";
+import {BoardColumnComponent} from "./board-column/board-column.component";
 import {RouterModule} from "@angular/router";
 import {LoaderComponent} from "./loader/loader.component";
 import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
@@ -36,7 +38,8 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@ang
     ProjectsComponent,
     TabComponent,
     LoaderComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    BoardComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@ang
     ReactiveFormsModule,
     AngularSvgIconModule.forRoot(),
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    BoardColumnComponent
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
