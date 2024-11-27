@@ -3,6 +3,7 @@
   width: 100%;
   background-color: transparent;
   color: var(--mat-sys-on-surface);
+  z-index: 10;
 
   .navbar-links a {
     color: var(--mat-sys-on-surface);

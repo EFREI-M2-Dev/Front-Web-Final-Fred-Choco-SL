@@ -9,7 +9,8 @@ button {
     background-color: var(--mat-sys-primary);
     color: var(--mat-sys-on-primary);
   }
-  &.mat-secondary {
+
+  &.mat-tonal {
     background-color: var(--mat-sys-secondary-container);
     color: var(--mat-sys-on-secondary-container);
   }
