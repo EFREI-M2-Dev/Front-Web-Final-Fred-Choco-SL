@@ -23,6 +23,8 @@ import {MatIcon} from "@angular/material/icon";
 import {TabComponent} from "./tab/tab.component";
 import {BoardComponent} from "./board/board.component";
 import {BoardColumnComponent} from "./board-column/board-column.component";
+import {RouterModule} from "@angular/router";
+import {LoaderComponent} from "./loader/loader.component";
 
 @NgModule({
   declarations: [
@@ -40,16 +42,20 @@ import {BoardColumnComponent} from "./board-column/board-column.component";
     HeaderComponent,
     TabComponent,
     ProjectsComponent,
-    BoardComponent
+    BoardComponent,
+    ProjectsComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
     ReactiveFormsModule,
     SvgIconComponent,
     AngularSvgIconModule.forRoot(),
+    ProjectCardComponent,
     ProjectCardComponent,
     MatTabsModule,
     MatIcon,
@@ -62,7 +68,7 @@ import {BoardColumnComponent} from "./board-column/board-column.component";
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })
