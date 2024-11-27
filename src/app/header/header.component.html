@@ -2,9 +2,9 @@
   <div class="container">
     <div class="first-section">
       <div class="header-icon">
-        <svg-icon *ngIf="isLoggedIn$" src="assets/clipboard-regular.svg"
+        <svg-icon *ngIf="!(isLoggedIn$ | async)" src="assets/clipboard-regular.svg"
                   [svgStyle]="{'width': 'auto', 'height': '4rem', 'fill':'var(--mat-sys-on-primary)'}"></svg-icon>
-        <app-avatar *ngIf="!isLoggedIn$"></app-avatar>
+        <app-avatar *ngIf="isLoggedIn$ | async"></app-avatar>
       </div>
       <div class="header-text">
         <p class="headerTopLine">{{ headerTopLine }}</p>

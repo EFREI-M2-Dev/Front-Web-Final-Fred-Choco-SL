@@ -1,10 +1,19 @@
 /* Conteneur principal */
 #register {
   display          : flex;
-  justify-content  : center;
+  justify-content  : flex-start;
   align-items      : center;
+  flex-direction   : column;
   height           : 100vh;
-  background-color : #F8F3FC; /* Couleur de fond légèrement violette */
+  background-color : var(--mat-sys-on-primary-fixed-variant); /* Couleur de fond légèrement violette */
+}
+
+#register form .logo {
+  color : var(--mat-sys-on-primary-fixed-variant);
+}
+
+#register form small {
+  color : var(--mat-sys-error);
 }
 
 #register form {
@@ -15,18 +24,9 @@
   display          : flex;
   flex-direction   : column;
   gap              : 1em;
-
-  box-shadow       : 0 8px 24px rgba(0, 0, 0, 0.1); /* Ombre légère */
-  text-align       : center; /* Centrer le texte */
+  box-shadow       : 0 8px 24px rgba(0, 0, 0, 0.4); /* Ombre légère */
 }
 
-/* Logo ou titre */
-#register form h1 {
-  font-size     : 24px;
-  font-weight   : bold;
-  margin-bottom : 20px;
-  color         : #333;
-}
 
 /* Input fields */
 #register form input {
@@ -35,7 +35,6 @@
   border           : none;
   border-radius    : 8px;
   padding          : 12px;
-  //margin-bottom: 16px;
   font-size        : 16px;
   color            : #5C4B68;
   position         : relative;
@@ -44,17 +43,6 @@
 #register form input:focus {
   outline    : none;
   box-shadow : 0 0 0 2px #BB93DD; /* Effet focus violet */
-}
-
-/* Icônes de suppression (simulées avec positionnement absolu) */
-#register form input + span {
-  position  : absolute;
-  right     : 20px;
-  top       : 50%;
-  transform : translateY(-50%);
-  cursor    : pointer;
-  font-size : 18px;
-  color     : #A293B4;
 }
 
 /* Bouton */
@@ -75,27 +63,13 @@
   background-color : #5A38B5; /* Effet de survol */
 }
 
-/* Lien */
-#register form a {
-  display         : block;
-  margin-top      : 16px;
-  color           : #6E44E5;
-  text-decoration : none;
-  font-size       : 14px;
-}
-
-#register form a:hover {
-  text-decoration : underline;
-}
-
-
 .logo {
-  display     : flex;
-  align-items : center;
-  justify-content: flex-start;
-  gap         : .2em;
-  font-size   : 1.5em;
-  font-weight : bold;
+  display         : flex;
+  align-items     : center;
+  justify-content : flex-start;
+  gap             : .2em;
+  font-size       : 1.5em;
+  font-weight     : bold;
 }
 
 
