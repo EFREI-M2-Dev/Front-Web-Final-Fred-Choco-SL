@@ -1,17 +1,16 @@
-<section class="container header-container">
-  <div class="header-icon">
-    <svg-icon
-      *ngIf="!(isLoggedIn$ | async)"
-      src="assets/logo.svg"
-      [svgStyle]="{'width': '48px', 'height': '48px'}">
-    </svg-icon>
-    <app-avatar
-      *ngIf="isLoggedIn$ | async"
-      >
-    </app-avatar>
-  </div>
-  <div class="header-text">
-    <p class="headerTopLine">{{ headerTopLine }}</p>
-    <h2 class="headerTitle">{{ headerTitle }}</h2>
+<section class="page-header">
+  <div class="container">
+    <div class="first-section">
+      <div class="header-icon">
+        <svg-icon *ngIf="!(isLoggedIn$ | async)" src="assets/clipboard-regular.svg"
+                  [svgStyle]="{'width': 'auto', 'height': '4rem', 'fill':'var(--mat-sys-on-primary)'}"></svg-icon>
+        <app-avatar *ngIf="isLoggedIn$ | async"></app-avatar>
+      </div>
+      <div class="header-text">
+        <p class="headerTopLine">{{ headerTopLine }}</p>
+        <h2 class="headerTitle">{{ headerTitle }}</h2>
+      </div>
+    </div>
+
   </div>
 </section>

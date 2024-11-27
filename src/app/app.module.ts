@@ -16,6 +16,8 @@ import {RegisterPageComponent} from "./register-page/register-page.component";
 import {AuthInterceptor} from "./Auth/auth.interceptor";
 import {AvatarComponent} from "./avatar/avatar.component";
 import {HeaderComponent} from "./header/header.component";
+import {ProjectsComponent} from "./projects/projects.component";
+import {ProjectCardComponent} from "./project-card/project-card.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {HeaderComponent} from "./header/header.component";
     IndexComponent,
     RegisterPageComponent,
     AvatarComponent,
-    HeaderComponent
+    HeaderComponent,
+    RegisterPageComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ import {HeaderComponent} from "./header/header.component";
     MatButtonModule,
     ReactiveFormsModule,
     SvgIconComponent,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
+    ProjectCardComponent
   ],
   providers: [
     provideHttpClient(),
