@@ -7,20 +7,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {ButtonComponent} from "./button/button.component";
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import {provideHttpClient} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    AngularSvgIconModule.forRoot()
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
