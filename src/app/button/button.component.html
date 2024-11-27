@@ -1,19 +1,20 @@
 <!-- Bouton Basic -->
-<button *ngIf="type === 'basic'" mat-button [ngClass]="[getBackgroundClass(), getTextClass()]" [disabled]="disabled">
+<button *ngIf="type === 'basic'" mat-button [color]="color" [ngClass]="[getTextClass()]" [disabled]="disabled">
   {{ label }}
 </button>
 
 <!-- Bouton Raised -->
-<button *ngIf="type === 'raised'" mat-raised-button [ngClass]="[getBackgroundClass(), getTextClass()]" [disabled]="disabled">
+<button *ngIf="type === 'raised'" mat-raised-button [color]="color" [ngClass]="[getTextClass()]" [disabled]="disabled">
   {{ label }}
 </button>
 
 <!-- Bouton Stroked -->
-<button *ngIf="type === 'stroked'" mat-stroked-button [ngClass]="[getBackgroundClass(), getTextClass()]" [disabled]="disabled">
+<button *ngIf="type === 'stroked'" mat-stroked-button [color]="color" [ngClass]="[getTextClass()]"
+        [disabled]="disabled">
   {{ label }}
 </button>
 
 <!-- Bouton Flat -->
-<button *ngIf="type === 'flat'" mat-flat-button [ngClass]="[getBackgroundClass(), getTextClass()]" [disabled]="disabled">
+<button *ngIf="type === 'flat'" mat-flat-button [color]="color" [ngClass]="[getTextClass()]" [disabled]="disabled">
   {{ label }}
 </button>

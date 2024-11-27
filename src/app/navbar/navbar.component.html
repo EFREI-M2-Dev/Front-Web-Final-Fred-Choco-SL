@@ -1,36 +1,55 @@
-<nav [ngClass]="{ 'navbar home': isHomePage, 'navbar': !isHomePage }">
+<nav [className]="isHomePage ? 'navbar home' : 'navbar'">
   <div class="container navbar-content">
     <div class="left-part">
-      <div class="logo">
-        <img src="assets/logo.svg" alt="Logo">
+      <div class="website-brand">
+        <div class="logo">
+          <svg class="logo-svg" width="495" height="495" viewBox="0 0 495 495" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M342.333 61.875H303.792H294.542C287.411 26.5869 256.289 0 219 0C181.711 0 150.589 26.5869 143.458 61.875H134.208H95.6667C61.6536 61.875 34 89.6221 34 123.75V433.125C34 467.253 61.6536 495 95.6667 495H342.333C376.346 495 404 467.253 404 433.125V246.272L357.75 292.947V433.125C357.75 441.633 350.812 448.594 342.333 448.594H95.6667C87.1875 448.594 80.25 441.633 80.25 433.125V123.75C80.25 115.242 87.1875 108.281 95.6667 108.281H111.083V131.484C111.083 144.343 121.393 154.688 134.208 154.688H219H303.792C316.607 154.688 326.917 144.343 326.917 131.484V108.281H342.333C350.812 108.281 357.75 115.242 357.75 123.75V197.754L404 151.694V123.75C404 89.6221 376.346 61.875 342.333 61.875ZM235.352 93.7508C231.015 98.1023 225.133 100.547 219 100.547C212.867 100.547 206.985 98.1023 202.648 93.7508C198.311 89.3994 195.875 83.4976 195.875 77.3438C195.875 71.1899 198.311 65.2881 202.648 60.9367C206.985 56.5852 212.867 54.1406 219 54.1406C225.133 54.1406 231.015 56.5852 235.352 60.9367C239.689 65.2881 242.125 71.1899 242.125 77.3438C242.125 83.4976 239.689 89.3994 235.352 93.7508Z"
+                  fill="white"/>
+            <path
+              d="M454.714 147.263C461.762 154.281 461.762 165.628 454.714 172.571L256.758 369.737C249.709 376.754 238.312 376.754 231.339 369.737L129.286 268.205C122.238 261.188 122.238 249.84 129.286 242.897C136.335 235.954 147.732 235.879 154.706 242.897L243.936 331.737L429.219 147.263C436.268 140.246 447.665 140.246 454.639 147.263H454.714Z"
+              fill="white"/>
+          </svg>
+        </div>
         <span>Todoum</span>
       </div>
 
-      <div class="navbar-links" *ngIf="!isHomePage">
-        <a href="#">Accueil</a>
-        <a href="#">Activité récente</a>
-        <a href="#">Aide</a>
-      </div>
+      <ul class="navbar-links" *ngIf="!isHomePage">
+        <li>
+          <a href="#">Accueil</a>
+        </li>
+        <li>
+          <a href="#">Activité récente</a>
+        </li>
+        <li>
+          <a href="#">Aide</a>
+        </li>
+      </ul>
     </div>
 
     <div class="navbar-actions">
       <app-button
         *ngIf="isHomePage"
         label="Se connecter"
-        background="secondary"
+        color="secondary"
         text="primary"
+        type="flat"
       ></app-button>
       <app-button
         *ngIf="isHomePage"
         label="S'inscrire"
-        background="primary"
+        color="primary"
         text="secondary"
+        type="flat"
       ></app-button>
       <app-button
         *ngIf="!isHomePage"
         label="Se déconnecter"
-        background="primary"
+        color="primary"
         text="secondary"
+        type="flat"
       ></app-button>
     </div>
   </div>
