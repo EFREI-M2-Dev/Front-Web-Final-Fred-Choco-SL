@@ -20,7 +20,11 @@ export class AuthService {
 
     if (token && userDisplayName) {
       const [name, surname] = userDisplayName.split('&&');
-      const user: User = { id: 0, email: '', name, surname, password: '', createdAt: '', updatedAt: '' };
+      const id = this.getUserIdFromToken();
+      if(!id) {
+        return;
+      }
+      const user: User = { id: id, email: '', name, surname, password: '', createdAt: '', updatedAt: '' };
       this.userSubject.next(user);
       this.isLoggedInSubject.next(true);
     }
@@ -58,5 +62,26 @@ export class AuthService {
   // Get the current token from local storage
   getToken(): string | null {
     return localStorage.getItem('token');
+  }
+
+  private parseJwt(token: string): any {
+    try {
+      const payload = token.split('.')[1];
+      const decodedPayload = atob(payload); // Décode la partie Base64
+      return JSON.parse(decodedPayload); // Convertit le JSON string en objet
+    } catch (error) {
+      console.error('Error parsing JWT', error);
+      return null;
+    }
+  }
+
+  // Méthode pour obtenir l'ID utilisateur depuis le token
+  getUserIdFromToken(): number | null {
+    const token = this.getToken();
+    if (token) {
+      const payload = this.parseJwt(token);
+      return payload?.id || null; // Remplacez 'id' par la clé exacte utilisée dans votre token
+    }
+    return null;
   }
 }

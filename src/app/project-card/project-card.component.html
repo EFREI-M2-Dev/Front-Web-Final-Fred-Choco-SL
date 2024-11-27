@@ -1,23 +1,48 @@
 <div class="project-card">
-    <div class="header">
-        <button mat-fab aria-label="Example icon button with a delete icon">
-            <mat-icon>edit</mat-icon>
-        </button>
+  <div class="header">
+    <button
+      mat-fab
+      aria-label="Edit project"
+      *ngIf="!isEditing"
+      (click)="enableEdit()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <div class="editContainer" *ngIf="isEditing">
+      <button
+        mat-fab
+        aria-label="Save changes"
+        (click)="saveChanges()"
+        class="save-btn"
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button
+        mat-fab
+        aria-label="Cancel edit"
+        (click)="cancelEdit()"
+        class="cancel-btn"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
-    <div class="content">
-        <div class="meta">
-            <div class="title">
-                Tâches ménagères
-            </div>
-            <div class="desc">
-                Projet de Nicolas Durand
-            </div>
+  </div>
+  <div class="content">
+    <form [formGroup]="editForm">
+      <!-- Mode affichage -->
+      <div *ngIf="!isEditing">
+        <div class="title">{{ project.name }}</div>
+        <div class="desc">{{ project.description || 'Aucune description disponible' }}</div>
+      </div>
+      <!-- Mode édition -->
+      <div *ngIf="isEditing">
+        <div class="title">
+          <input #firstInput formControlName="name" placeholder="Nom du projet" />
         </div>
-        <div class="details">
-            <div class="list">
-                <div class="fake-profile"></div>
-                <div class="fake-profile"></div>
-            </div>
+        <div class="desc">
+          <input formControlName="description" placeholder="Description du projet" />
         </div>
-    </div>
+      </div>
+    </form>
+  </div>
 </div>

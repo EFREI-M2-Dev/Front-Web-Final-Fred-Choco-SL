@@ -1,8 +1,21 @@
 <app-navbar [isHomePage]="false"></app-navbar>
-<app-header headerTitle="Bon retour parmi nous !" [headerTopLine]="headerTopLine"/>
+<app-header [headerTitle]="headerTopLine" [headerTopLine]="headerTopLine"></app-header>
+
 <div class="container projects-wrapper">
   <h3>Mes projets</h3>
-  <div class="projects-cards">
-    <app-project-card/>
+
+  <div *ngIf="isLoading" class="loader">
+    Chargement des projets...
+  </div>
+
+  <div *ngIf="!isLoading && projects.length === 0" class="no-projects">
+    Aucun projet trouvé.
+  </div>
+
+  <div class="projects-cards" *ngIf="!isLoading && projects.length > 0">
+    <app-project-card
+      *ngFor="let project of projects"
+      [project]="project"
+    ></app-project-card>
   </div>
 </div>
