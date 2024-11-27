@@ -15,9 +15,5 @@ export class HeaderComponent {
 
   constructor(private authService: AuthService) {
     this.isLoggedIn$ = this.authService.isLoggedIn();
-    console.log('HeaderComponent constructor');
-    this.isLoggedIn$.subscribe(isLoggedIn => {
-      console.log('Is Logged In:', isLoggedIn);
-    });
   }
 }
