@@ -1,5 +1,3 @@
-@import "../../styles";
-
 button {
   border-radius: 100px;
 
@@ -10,7 +8,7 @@ button {
     color: var(--mat-sys-on-primary);
   }
 
-  &.mat-tonal {
+  &.mat-secondary {
     background-color: var(--mat-sys-secondary-container);
     color: var(--mat-sys-on-secondary-container);
   }
