@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {TaskDetailModalComponent} from "../task-detail-modal/task-detail-modal.component";
 
 @Component({
   selector: 'app-board-task',
@@ -8,4 +10,11 @@ import {Component} from '@angular/core';
 })
 export class BoardTaskComponent {
 
+  constructor(private dialog: MatDialog) {
+  }
+
+  openTaskDetail() {
+    console.log("Ouverture de la popup des détails");
+    this.dialog.open(TaskDetailModalComponent);
+  }
 }
