@@ -1,10 +1,10 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'app-button',
-    templateUrl: './button.component.html',
-    styleUrls: ['./button.component.scss'],
-    standalone: false
+  selector: 'app-button',
+  templateUrl: './button.component.html',
+  styleUrls: ['./button.component.scss'],
+  standalone: false,
 })
 export class ButtonComponent {
   @Input() label: string = 'Bouton'; // Texte du bouton
@@ -12,8 +12,15 @@ export class ButtonComponent {
   @Input() text: 'primary' | 'secondary' = 'secondary';
   @Input() type: 'basic' | 'raised' | 'stroked' | 'flat' | 'icon' = 'basic'; // Type de bouton
   @Input() disabled: boolean = false; // Désactiver le bouton
+  @Output() onClick = new EventEmitter<Event>();
 
   getTextClass(): string {
     return `text-${this.text}`;
+  }
+
+  handleClick(event: Event) {
+    if (!this.disabled) {
+      this.onClick.emit(event);
+    }
   }
 }

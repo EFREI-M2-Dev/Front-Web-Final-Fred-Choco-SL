@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-index',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
     standalone: false
 })
 export class IndexComponent {
+  constructor(private router: Router) {}
+
+  async hanldeClick(event: Event, route: string) {
+    await this.router.navigate([route]);
+  }
 
 }

@@ -14,6 +14,8 @@ import {AngularSvgIconModule, SvgIconComponent} from 'angular-svg-icon';
 import {HTTP_INTERCEPTORS, provideHttpClient} from "@angular/common/http";
 import {RegisterPageComponent} from "./register-page/register-page.component";
 import {AuthInterceptor} from "./Auth/auth.interceptor";
+import {AvatarComponent} from "./avatar/avatar.component";
+import {HeaderComponent} from "./header/header.component";
 import {ProjectsComponent} from "./projects/projects.component";
 
 @NgModule({
@@ -23,6 +25,9 @@ import {ProjectsComponent} from "./projects/projects.component";
     NavbarComponent,
     LoginPageComponent,
     IndexComponent,
+    RegisterPageComponent,
+    AvatarComponent,
+    HeaderComponent,
     RegisterPageComponent,
     ProjectsComponent
   ],
