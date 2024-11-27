@@ -1,83 +1,81 @@
 /* Styles généraux pour la navbar */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.navbar {
   width: 100%;
-}
-
-.navbar-content__left {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-
-  img {
-    height: 40px;
-    margin-right: 10px;
-  }
-
-  span {
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-}
-
-.navbar-links {
-  a {
-    margin-right: 20px;
-    text-decoration: none;
-    color: #333;
-    font-size: 1.1em;
-  }
-}
-
-.navbar-actions {
-  display: flex;
-  gap: 1em;
-  button {
-    margin-left: 10px;
-  }
-}
-
-/* Navbar pour la page d'accueil */
-.home-navbar {
-  background-color: #4d3b7d;  // Couleur personnalisée pour la navbar home
-  color: white;
+  background-color: transparent;
+  color: var(--mat-sys-on-surface);
 
   .navbar-links a {
-    color: white;
+    color: var(--mat-sys-on-surface);
   }
 
-  .navbar-actions button {
-    background-color: white;
-    color: #4d3b7d;
+  &.home {
+    color: var(--mat-sys-on-primary);
+
+    .navbar-links a {
+      color: var(--mat-sys-on-primary);
+    }
+
+    .logo-svg {
+      path {
+        fill: var(--mat-sys-on-primary) !important;
+      }
+    }
+  }
+
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+
+    .left-part {
+      display: flex;
+      align-content: center;
+      gap: 1rem;
+
+      .website-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .logo {
+          width: 1.25rem;
+          height: 1.25rem;
+
+          .logo-svg {
+            width: 100%;
+            height: 100%;
+
+            path {
+              fill: var(--mat-sys-on-surface);
+            }
+          }
+        }
+      }
+
+      // Is a ul element that must be horizontal without any list-style
+      .navbar-links {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
   }
 }
 
-/* Navbar pour les autres pages */
-.default-navbar {
-  background-color: #e8e6ee;  // Couleur différente pour les autres pages
-  color: #4d3b7d;
-
-  .navbar-links a {
-    color: #4d3b7d;
-  }
-
-  .navbar-actions button {
-    background-color: #4d3b7d;
-    color: white;
-  }
-}

@@ -1,35 +1,55 @@
 @use '@angular/material' as mat;
+@use 'media-breakpoints' as bp;
+@use 'sass:map';
 
-@include mat.core();
+html {
+  color-scheme: light dark;
+  @include mat.theme((
+    color: mat.$violet-palette,
+    typography: Roboto,
+    density: 0
+  ));
 
-$my-palette: (
-  50: #e8e6ee,
-  100: #c7c1d7,
-  200: #a299bc,
-  300: #7f71a2,
-  400: #65558f,
-  500: #4d3b7d,
-  600: #473678,
-  700: #3d2f6f,
-  800: #342965,
-  900: #251e58,
+  body {
+    height: 100%;
+    margin: 0;
+    background-color: var(--mat-sys-background);
+    font: var(--mat-sys-body-large), Roboto, sans-serif;
+  }
+}
 
-  contrast: (
-    50: rgba(black, 0.87)
-  )
-);
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
-$my-app-primary: mat.define-palette($my-palette, 400);
+* {
+  box-sizing: border-box;
+}
 
-$my-app-theme: mat.define-light-theme((
-  color: (
-    primary: $my-app-primary,
-    accent: $my-app-primary,
-    warn: $my-app-primary
-  )
-));
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
 
-@include mat.all-component-themes($my-app-theme);
+  @include bp.media-breakpoint-up(sm) {
+    max-width: map.get(bp.$container-max-widths, sm);
+  }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  @include bp.media-breakpoint-up(md) {
+    max-width: map.get(bp.$container-max-widths, md);
+  }
+
+  @include bp.media-breakpoint-up(lg) {
+    max-width: map.get(bp.$container-max-widths, lg);
+  }
+
+  @include bp.media-breakpoint-up(xl) {
+    max-width: map.get(bp.$container-max-widths, xl);
+  }
+
+  @include bp.media-breakpoint-up(xxl) {
+    max-width: map.get(bp.$container-max-widths, xxl);
+  }
+}
