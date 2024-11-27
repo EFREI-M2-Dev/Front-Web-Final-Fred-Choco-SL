@@ -44,12 +44,14 @@
         color="tonal"
         text="primary"
         type="flat"
+        (onClick)="hanldeClick($event, 'login')"
       ></app-button>
       <app-button
         label="S'inscrire"
         color="primary"
         text="secondary"
         type="flat"
+        (onClick)="hanldeClick($event, 'register')"
       ></app-button>
     </div>
     <app-header></app-header>

@@ -18,7 +18,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
     const userDisplayName = localStorage.getItem('userDisplayName');
     if (token && userDisplayName) {
-      const [name, surname] = userDisplayName.split(' ');
+      const [name, surname] = userDisplayName.split('&&');
       const user: User = { id: 0, email: '', name, surname, password: '', createdAt: '', updatedAt: '' };
       this.userSubject.next(user);
       this.isLoggedInSubject.next(true);
@@ -38,7 +38,7 @@ export class AuthService {
   // Log in the user and store the token/user in memory and local storage
   login(token: string, user: User) {
     localStorage.setItem('token', token);
-    const fullName = `${user.name} ${user.surname}`;
+    const fullName = `${user.name}&&${user.surname}`;
     localStorage.setItem('userDisplayName', fullName);
 
     this.userSubject.next(user);
