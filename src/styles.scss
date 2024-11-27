@@ -1,11 +1,17 @@
 @use '@angular/material' as mat;
 @use 'media-breakpoints' as bp;
 @use 'sass:map';
+@use 'theme-colors' as tc;
+
 
 html {
   color-scheme: light dark;
   @include mat.theme((
-    color: mat.$violet-palette,
+    color: (
+      primary: tc.$primary-palette,
+      tertiary: tc.$tertiary-palette,
+      theme-type: light
+    ),
     typography: Roboto,
     density: 0
   ));
