@@ -18,8 +18,9 @@ import {AvatarComponent} from "./avatar/avatar.component";
 import {HeaderComponent} from "./header/header.component";
 import {ProjectsComponent} from "./projects/projects.component";
 import {ProjectCardComponent} from "./project-card/project-card.component";
-import { TabsComponent } from './tabs/tabs.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatIcon} from "@angular/material/icon";
+import {TabComponent} from "./tab/tab.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import {MatTabsModule} from "@angular/material/tabs";
     ProjectsComponent,
     IndexComponent,
     HeaderComponent,
-    TabsComponent
+    TabComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,8 @@ import {MatTabsModule} from "@angular/material/tabs";
     SvgIconComponent,
     AngularSvgIconModule.forRoot(),
     ProjectCardComponent,
-    MatTabsModule
+    MatTabsModule,
+    MatIcon
   ],
   providers: [
     provideHttpClient(),

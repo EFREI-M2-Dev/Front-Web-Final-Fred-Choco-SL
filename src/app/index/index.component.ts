@@ -13,5 +13,4 @@ export class IndexComponent {
   async hanldeClick(event: Event, route: string) {
     await this.router.navigate([route]);
   }
-
 }
