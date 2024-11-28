@@ -8,32 +8,28 @@
         <p *ngIf="currentProject">Projet : {{ currentProject.name }}</p>
         <p *ngIf="status">Statut : {{ status.name }}</p>
       </div>
-      <mat-form-field class="input">
-        <mat-label>Nom de la tâche</mat-label>
+      <div>
         <input
-          matInput
           type="text"
           formControlName="name"
           placeholder="Nom de la tâche"
         />
-        @if (addForm?.get('name')?.invalid && addForm?.get('name')?.touched) {
-          <mat-error>Le nom est requis et doit faire au moins 3 caractères.</mat-error>
-        }
-      </mat-form-field>
-      <mat-form-field class="input">
-        <mat-label>Description (facultatif)</mat-label>
+        <div *ngIf="addForm?.get('name')?.invalid && addForm?.get('name')?.touched">
+          <small>Le nom est requis et doit faire au moins 3 caractères.</small>
+        </div>
+      </div>
+      <div>
         <input
-          matInput
           type="text"
           formControlName="description"
           placeholder="Description (facultatif)"
         />
-      </mat-form-field>
+      </div>
       <div class="buttons">
-        <button mat-stroked-button type="button" class="cancel-btn" (click)="onCancel()">
+        <button type="button" class="cancel-btn" (click)="onCancel()">
           Annuler
         </button>
-        <button mat-flat-button type="submit" [disabled]="addForm.invalid">
+        <button type="submit" [disabled]="addForm.invalid">
           <mat-icon>add</mat-icon>
           <span>Ajouter</span>
         </button>
