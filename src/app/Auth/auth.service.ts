@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {User} from "../login-page/login-page.component";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class AuthService {
   private userSubject = new BehaviorSubject<User | null>(null);
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
 
-  constructor() {
+  constructor(private router: Router) {
     this.loadAuthFromStorage();
   }
 
@@ -20,7 +21,11 @@ export class AuthService {
 
     if (token && userDisplayName) {
       const [name, surname] = userDisplayName.split('&&');
-      const user: User = { id: 0, email: '', name, surname, password: '', createdAt: '', updatedAt: '' };
+      const id = this.getUserIdFromToken();
+      if(!id) {
+        return;
+      }
+      const user: User = { id: id, email: '', name, surname, password: '', createdAt: '', updatedAt: '' };
       this.userSubject.next(user);
       this.isLoggedInSubject.next(true);
     }
@@ -37,19 +42,23 @@ export class AuthService {
   }
 
   // Log in the user and store the token/user in memory and local storage
-  login(token: string, user: User) {
+  async login(token: string, user: User) {
     localStorage.setItem('token', token);
     const fullName = `${user.name}&&${user.surname}`;
     localStorage.setItem('userDisplayName', fullName);
+
+    await this.router.navigate(['/projects']);
 
     this.userSubject.next(user);
     this.isLoggedInSubject.next(true);
   }
 
   // Log out the user
-  logout() {
+  async logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('userDisplayName');
+
+    await this.router.navigate(['/']);
 
     this.userSubject.next(null);
     this.isLoggedInSubject.next(false);
@@ -58,5 +67,26 @@ export class AuthService {
   // Get the current token from local storage
   getToken(): string | null {
     return localStorage.getItem('token');
+  }
+
+  private parseJwt(token: string): any {
+    try {
+      const payload = token.split('.')[1];
+      const decodedPayload = atob(payload); // Décode la partie Base64
+      return JSON.parse(decodedPayload); // Convertit le JSON string en objet
+    } catch (error) {
+      console.error('Error parsing JWT', error);
+      return null;
+    }
+  }
+
+  // Méthode pour obtenir l'ID utilisateur depuis le token
+  getUserIdFromToken(): number | null {
+    const token = this.getToken();
+    if (token) {
+      const payload = this.parseJwt(token);
+      return payload?.id || null; // Remplacez 'id' par la clé exacte utilisée dans votre token
+    }
+    return null;
   }
 }

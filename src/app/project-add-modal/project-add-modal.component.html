@@ -1,0 +1,32 @@
+<div class="project-modal">
+  <div class="modal">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="logo">
+        <span>Créer un projet</span>
+      </div>
+      <div>
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Nom du projet"
+        />
+        <div *ngIf="addForm?.get('name')?.invalid && addForm?.get('name')?.touched">
+          <small>Le nom est requis et doit faire au moins 6 caractères.</small>
+        </div>
+      </div>
+      <div>
+        <input
+          type="text"
+          formControlName="description"
+          placeholder="Description"
+        />
+      </div>
+
+      <button type="submit" [disabled]="addForm.invalid">
+        <mat-icon>add</mat-icon>
+        <span>Créer le projet</span>
+      </button>
+    </form>
+  </div>
+</div>
+

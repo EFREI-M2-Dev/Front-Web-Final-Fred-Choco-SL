@@ -4,10 +4,8 @@ import {BoardTaskComponent} from "../board-task/board-task.component";
 @Component({
   selector: 'app-board-column',
   templateUrl: './board-column.component.html',
-    imports: [
-        BoardTaskComponent
-    ],
-  styleUrls: ['./board-column.component.scss']
+  styleUrls: ['./board-column.component.scss'],
+  standalone: false
 })
 export class BoardColumnComponent {
   @Input() title: string = 'Colonne de tâches';

@@ -4,9 +4,9 @@ import {TaskDetailModalComponent} from "../task-detail-modal/task-detail-modal.c
 
 @Component({
   selector: 'app-board-task',
-  imports: [],
   templateUrl: './board-task.component.html',
-  styleUrl: './board-task.component.scss'
+  styleUrl: './board-task.component.scss',
+  standalone: false
 })
 export class BoardTaskComponent {
 

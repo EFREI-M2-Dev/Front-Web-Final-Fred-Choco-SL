@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -10,8 +9,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {IndexComponent} from "./index/index.component";
-import {AngularSvgIconModule, SvgIconComponent} from 'angular-svg-icon';
-import {HTTP_INTERCEPTORS, provideHttpClient} from "@angular/common/http";
+import {AngularSvgIconModule} from 'angular-svg-icon';
 import {RegisterPageComponent} from "./register-page/register-page.component";
 import {AuthInterceptor} from "./Auth/auth.interceptor";
 import {AvatarComponent} from "./avatar/avatar.component";
@@ -19,12 +17,16 @@ import {HeaderComponent} from "./header/header.component";
 import {ProjectsComponent} from "./projects/projects.component";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {MatTabsModule} from "@angular/material/tabs";
-import {MatIcon} from "@angular/material/icon";
+import {MatIconModule} from "@angular/material/icon";
 import {TabComponent} from "./tab/tab.component";
 import {BoardComponent} from "./board/board.component";
 import {BoardColumnComponent} from "./board-column/board-column.component";
 import {RouterModule} from "@angular/router";
 import {LoaderComponent} from "./loader/loader.component";
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
+import {ProjectAddModalComponent} from "./project-add-modal/project-add-modal.component";
+import {BoardTaskComponent} from "./board-task/board-task.component";
+import {ConfirmDeleteModalComponent} from "./confirm-delete-modal/confirm-delete-modal.component";
 
 @NgModule({
   declarations: [
@@ -36,15 +38,15 @@ import {LoaderComponent} from "./loader/loader.component";
     RegisterPageComponent,
     AvatarComponent,
     HeaderComponent,
-    RegisterPageComponent,
     ProjectsComponent,
-    IndexComponent,
-    HeaderComponent,
     TabComponent,
-    ProjectsComponent,
+    LoaderComponent,
+    ProjectCardComponent,
     BoardComponent,
-    ProjectsComponent,
-    LoaderComponent
+    BoardColumnComponent,
+    ProjectAddModalComponent,
+    BoardTaskComponent,
+    ConfirmDeleteModalComponent
   ],
   imports: [
     BrowserModule,
@@ -53,17 +55,12 @@ import {LoaderComponent} from "./loader/loader.component";
     BrowserAnimationsModule,
     MatButtonModule,
     ReactiveFormsModule,
-    SvgIconComponent,
     AngularSvgIconModule.forRoot(),
-    ProjectCardComponent,
-    ProjectCardComponent,
     MatTabsModule,
-    MatIcon,
-    ProjectCardComponent,
-    BoardColumnComponent
+    MatIconModule,
   ],
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -72,5 +69,4 @@ import {LoaderComponent} from "./loader/loader.component";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
