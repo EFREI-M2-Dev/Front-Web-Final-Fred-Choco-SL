@@ -6,33 +6,29 @@
         <svg-icon src="assets/logo.svg"></svg-icon>
         <span>Connexion</span>
       </div>
-      <mat-form-field class="input">
-        <mat-label>Email</mat-label>
+      <div>
         <input
-          matInput
           type="email"
           formControlName="email"
           placeholder="Email"
           data-form-type="email"
         />
-        @if (loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched) {
-          <mat-error>Un e-mail valide est requis</mat-error>
-        }
-      </mat-form-field>
-      <mat-form-field class="input">
-        <mat-label>Mot de passe</mat-label>
+        <div *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+          <small>L'email est requis et doit être une adresse email valide.</small>
+        </div>
+      </div>
+      <div>
         <input
-          matInput
           type="password"
           formControlName="password"
           placeholder="Mot de passe"
           data-form-type="password"
         />
-        @if (loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched) {
-          <mat-error>Le mot de passe est requis et doit comporter au moins 6 caractères.</mat-error>
-        }
-      </mat-form-field>
-      <button type="submit" mat-flat-button [disabled]="loginForm.invalid">Se connecter</button>
+        <div *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched">
+          <small>Le mot de passe est requis et doit comporter au moins 6 caractères.</small>
+        </div>
+      </div>
+      <button type="submit" [disabled]="loginForm.invalid">Se connecter</button>
     </form>
   </div>
 </section>
