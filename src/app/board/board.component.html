@@ -5,6 +5,7 @@
     *ngFor="let status of statuses"
     [status]="status"
     [currentProject]="currentProject"
+    [connectedLists]="connectedLists"
     (taskCreated)="reloadProject()"
   />
 </div>

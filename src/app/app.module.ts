@@ -28,6 +28,7 @@ import {ProjectAddModalComponent} from "./project-add-modal/project-add-modal.co
 import {BoardTaskComponent} from "./board-task/board-task.component";
 import {ConfirmDeleteModalComponent} from "./confirm-delete-modal/confirm-delete-modal.component";
 import {AddTaskModalComponent} from "./add-task-modal/add-task-modal.component";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {AddTaskModalComponent} from "./add-task-modal/add-task-modal.component";
     AngularSvgIconModule.forRoot(),
     MatTabsModule,
     MatIconModule,
+    DragDropModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

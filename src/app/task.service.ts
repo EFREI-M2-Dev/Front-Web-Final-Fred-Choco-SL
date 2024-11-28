@@ -17,4 +17,8 @@ export class TaskService {
   createTask(task: Task, projectId:number): Observable<Task> {
     return this.http.post<Task>(`${this.apiUrl}/${projectId}/task`, task);
   }
+
+  updateTask(projectId: number, taskId: number, task: Partial<Task>): Observable<Task> {
+    return this.http.put<Task>(`${this.apiUrl}/${projectId}/tasks/${taskId}`, task);
+  }
 }

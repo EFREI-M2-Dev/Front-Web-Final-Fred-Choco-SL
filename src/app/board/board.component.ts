@@ -17,6 +17,7 @@ export class BoardComponent {
   headerTopLine = 'Projects';
   currentProject: Project | null = null;
   statuses: Status[] = [];
+  connectedLists: string[] = [];
 
   constructor(
     private projectService: ProjectService,
@@ -81,6 +82,9 @@ export class BoardComponent {
     this.statusService.getStatuses().subscribe({
       next: (statuses) => {
         this.statuses = statuses;
+
+         this.connectedLists = statuses.map((status) => `column-${status.id}`);
+        console.log('Connected lists:', this.connectedLists);
       },
       error: (error) => {
         console.error('Erreur lors de la récupération des statuts:', error);
@@ -91,7 +95,6 @@ export class BoardComponent {
       }
     });
   }
-
 
   reloadProject() {
     if(!this.currentProject) return;

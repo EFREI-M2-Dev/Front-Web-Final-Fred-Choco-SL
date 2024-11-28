@@ -3,18 +3,26 @@
     <span>
       {{ status.name }}
     </span>
-    <button
-      mat-icon-button
-      (click)="addTask()"
-    >
+    <button mat-icon-button (click)="addTask()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
-  <div class="tasks-wrapper">
-    <app-board-task
+  <div
+    class="tasks-wrapper"
+    cdkDropList
+    [id]="'column-' + status.id"
+    [cdkDropListData]="getMyTasksWithStatus()"
+    [cdkDropListConnectedTo]="connectedLists"
+    (cdkDropListDropped)="onTaskDropped($event)"
+  >
+    <div
+      class="task"
       *ngFor="let task of getMyTasksWithStatus()"
-      [task]="task"
-      [status]="status"
-    />
+      cdkDrag
+      [cdkDragData]="task"
+    >
+      <app-board-task [task]="task" [status]="status"></app-board-task>
+    </div>
   </div>
+
 </div>
