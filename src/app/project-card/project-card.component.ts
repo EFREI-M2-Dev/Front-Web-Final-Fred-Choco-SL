@@ -4,6 +4,7 @@ import {Project} from '../models/project.model';
 import {ProjectService} from '../project.service';
 import {ConfirmDeleteModalComponent} from "../confirm-delete-modal/confirm-delete-modal.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-project-card',
@@ -22,7 +23,8 @@ export class ProjectCardComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder, // FormBuilder pour créer les formulaires
     private projectService: ProjectService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
 
     this.editForm = this.formBuilder.group({
@@ -103,6 +105,10 @@ export class ProjectCardComponent implements OnInit {
         });
       }
     });
+  }
+
+  async goToProject() {
+    await this.router.navigate(['/board', this.project.id]);
   }
 
 }

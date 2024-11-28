@@ -1,5 +1,5 @@
 <app-navbar [isHomePage]="false"></app-navbar>
-<app-header headerTopLine="Projet de Nicolas Durand" headerTitle="Tâches ménagères"/>
+<app-header [headerTitle]="headerTitle" [headerTopLine]="headerTopLine"></app-header>
 <div class="container board-wrapper">
   <app-board-column title="À faire"/>
   <app-board-column title="En cours"/>
