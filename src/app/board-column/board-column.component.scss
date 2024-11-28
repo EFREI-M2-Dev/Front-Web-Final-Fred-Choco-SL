@@ -11,6 +11,12 @@
 
   .title {
     user-select: none;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--mat-sys-on-primary-fixed-variant);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .tasks-wrapper {

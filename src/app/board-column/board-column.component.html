@@ -1,8 +1,20 @@
-<div class="board-column">
+<div class="board-column" *ngIf="status && currentProject">
   <div class="title">
-    {{ title }}
+    <span>
+      {{ status.name }}
+    </span>
+    <button
+      mat-icon-button
+      (click)="addTask()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
   <div class="tasks-wrapper">
-      <app-board-task/>
+    <app-board-task
+      *ngFor="let task of getMyTasksWithStatus()"
+      [task]="task"
+      [status]="status"
+    />
   </div>
 </div>

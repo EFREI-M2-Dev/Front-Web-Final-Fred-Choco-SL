@@ -1,5 +1,8 @@
-import {Component, Input} from '@angular/core';
-import {BoardTaskComponent} from "../board-task/board-task.component";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {AddTaskModalComponent} from "../add-task-modal/add-task-modal.component";
+import {Status} from "../models/status.model";
+import {Project} from "../models/project.model";
 
 @Component({
   selector: 'app-board-column',
@@ -8,5 +11,30 @@ import {BoardTaskComponent} from "../board-task/board-task.component";
   standalone: false
 })
 export class BoardColumnComponent {
-  @Input() title: string = 'Colonne de tâches';
+  @Input() status: Status | null = null;
+  @Input() currentProject: Project | null = null;
+  @Output() taskCreated = new EventEmitter<void>();
+
+  constructor(
+    private dialog: MatDialog
+  ) {
+  }
+
+  addTask() {
+    const dialogRef = this.dialog.open(AddTaskModalComponent, {
+      width: '500px',
+      data: { status: this.status, currentProject: this.currentProject },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.taskCreated.emit();
+        console.log('New task added:', result);
+      }
+    });
+  }
+
+  getMyTasksWithStatus() {
+    return this.currentProject?.tasks.filter((task) => task.statusId === this.status?.id);
+  }
 }

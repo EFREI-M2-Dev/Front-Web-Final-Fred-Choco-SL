@@ -1,0 +1,73 @@
+.project-modal {
+  .modal {
+    form {
+      width          : 100%;
+      border-radius  : 16px;
+      padding        : 40px;
+      display        : flex;
+      flex-direction : column;
+      gap            : 1em;
+      color          : var(--mat-sys-on-primary-fixed-variant);
+
+
+      .logo {
+        text-align  : center;
+        color       : var(--mat-sys-on-primary-fixed-variant);
+        font-size   : 1.5em;
+        font-weight : bold;
+      }
+
+      small {
+        color : var(--mat-sys-error);
+      }
+
+      input {
+        width            : 100%;
+        background-color : #EEE6F5;
+        border           : none;
+        border-radius    : 8px;
+        padding          : 12px;
+        font-size        : 16px;
+        color            : #5C4B68;
+
+        &:focus {
+          outline    : none;
+          box-shadow : 0 0 0 2px #BB93DD;
+        }
+      }
+
+      .buttons {
+        display         : flex;
+        justify-content : space-between;
+        gap             : 16px;
+
+        button {
+          flex             : 1;
+          background-color : #6E44E5;
+          color            : white;
+          border           : none;
+          border-radius    : 8px;
+          padding          : 12px;
+          font-size        : 16px;
+          cursor           : pointer;
+          font-weight      : bold;
+          display          : flex;
+          align-items      : center;
+          justify-content  : center;
+
+          &:hover {
+            background-color : #5A38B5;
+          }
+
+          &.cancel-btn {
+            background-color : #CCCCCC;
+
+            &:hover {
+              background-color : #AAAAAA;
+            }
+          }
+        }
+      }
+    }
+  }
+}

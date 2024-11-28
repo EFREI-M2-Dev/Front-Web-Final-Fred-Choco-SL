@@ -5,6 +5,7 @@ import {ProjectService} from '../project.service';
 import {ConfirmDeleteModalComponent} from "../confirm-delete-modal/confirm-delete-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+import {AuthService} from "../Auth/auth.service";
 
 @Component({
   selector: 'app-project-card',
@@ -16,15 +17,16 @@ export class ProjectCardComponent implements OnInit {
   @Input() project!: Project; // Le projet à afficher
   @Output() projectDeleted = new EventEmitter<void>();
 
-  editForm!: FormGroup; // Formulaire réactif
-  isEditing = false; // Indique si on est en mode édition
+  editForm!: FormGroup;
+  isEditing = false;
   @ViewChild('firstInput') firstInput!: ElementRef;
 
   constructor(
-    private formBuilder: FormBuilder, // FormBuilder pour créer les formulaires
+    private formBuilder: FormBuilder,
     private projectService: ProjectService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
 
     this.editForm = this.formBuilder.group({
@@ -42,7 +44,8 @@ export class ProjectCardComponent implements OnInit {
   }
 
   // Passe en mode édition
-  enableEdit() {
+  enableEdit(event: MouseEvent) {
+    event.stopPropagation();
     this.isEditing = true;
     setTimeout(() => {
       if (this.firstInput) {
@@ -51,7 +54,8 @@ export class ProjectCardComponent implements OnInit {
     });
   }
 
-  cancelEdit() {
+  cancelEdit(event: MouseEvent) {
+    event.stopPropagation();
     this.isEditing = false;
     this.editForm.reset({
       name: this.project.name,
@@ -67,28 +71,33 @@ export class ProjectCardComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erreur lors du rechargement du projet:', err);
+
+        if(err.message.includes("expired token")) this.authService.logout();
       },
     });
   }
 
 
   // Enregistre les modifications
-  saveChanges() {
+  saveChanges(event: MouseEvent) {
+    event.stopPropagation();
     if (this.editForm.valid) {
       const updatedProject = this.editForm.value;
 
       this.projectService.updateProject(this.project.id, updatedProject).subscribe({
         next: () => {
-          this.reloadProject(); // Recharge les données après une mise à jour réussie
+          this.reloadProject();
         },
         error: (err) => {
           console.error('Erreur lors de la mise à jour du projet:', err);
+          if(err.message.includes("expired token")) this.authService.logout();
         },
       });
     }
   }
 
-  deleteProject() {
+  deleteProject(event: MouseEvent) {
+    event.stopPropagation();
     const dialogRef = this.dialog.open(ConfirmDeleteModalComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -101,6 +110,7 @@ export class ProjectCardComponent implements OnInit {
           },
           error: (err) => {
             console.error('Erreur lors de la suppression du projet:', err);
+            if(err.message.includes("expired token")) this.authService.logout();
           },
         });
       }

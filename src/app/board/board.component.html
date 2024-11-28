@@ -1,7 +1,11 @@
 <app-navbar [isHomePage]="false"></app-navbar>
 <app-header [headerTitle]="headerTitle" [headerTopLine]="headerTopLine"></app-header>
-<div class="container board-wrapper">
-  <app-board-column title="À faire"/>
-  <app-board-column title="En cours"/>
-  <app-board-column title="Terminées"/>
+<div class="container board-wrapper" *ngIf="statuses.length > 0">
+  <app-board-column
+    *ngFor="let status of statuses"
+    [status]="status"
+    [currentProject]="currentProject"
+    (taskCreated)="reloadProject()"
+  />
 </div>
+

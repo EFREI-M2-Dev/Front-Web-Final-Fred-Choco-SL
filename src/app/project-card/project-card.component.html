@@ -7,7 +7,7 @@
       *ngIf="!isEditing"
       color="warn"
       aria-label="Delete project"
-      (click)="deleteProject()"
+      (click)="deleteProject($event)"
       class="delete-btn"
     >
       <mat-icon>delete</mat-icon>
@@ -16,7 +16,7 @@
       mat-fab
       aria-label="Edit project"
       *ngIf="!isEditing"
-      (click)="enableEdit()"
+      (click)="enableEdit($event)"
     >
       <mat-icon>edit</mat-icon>
     </button>
@@ -24,7 +24,7 @@
       <button
         mat-fab
         aria-label="Save changes"
-        (click)="saveChanges()"
+        (click)="saveChanges($event)"
         class="save-btn"
       >
         <mat-icon>check</mat-icon>
@@ -32,7 +32,7 @@
       <button
         mat-fab
         aria-label="Cancel edit"
-        (click)="cancelEdit()"
+        (click)="cancelEdit($event)"
         class="cancel-btn"
       >
         <mat-icon>close</mat-icon>

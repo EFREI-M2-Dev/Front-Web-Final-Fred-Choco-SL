@@ -27,6 +27,7 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@ang
 import {ProjectAddModalComponent} from "./project-add-modal/project-add-modal.component";
 import {BoardTaskComponent} from "./board-task/board-task.component";
 import {ConfirmDeleteModalComponent} from "./confirm-delete-modal/confirm-delete-modal.component";
+import {AddTaskModalComponent} from "./add-task-modal/add-task-modal.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {ConfirmDeleteModalComponent} from "./confirm-delete-modal/confirm-delete
     BoardColumnComponent,
     ProjectAddModalComponent,
     BoardTaskComponent,
-    ConfirmDeleteModalComponent
+    ConfirmDeleteModalComponent,
+    AddTaskModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,39 @@
+<div class="project-modal">
+  <div class="modal">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="logo">
+        <span>Ajouter une tâche</span>
+      </div>
+      <div>
+        <p *ngIf="currentProject">Projet : {{ currentProject.name }}</p>
+        <p *ngIf="status">Statut : {{ status.name }}</p>
+      </div>
+      <div>
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Nom de la tâche"
+        />
+        <div *ngIf="addForm?.get('name')?.invalid && addForm?.get('name')?.touched">
+          <small>Le nom est requis et doit faire au moins 3 caractères.</small>
+        </div>
+      </div>
+      <div>
+        <input
+          type="text"
+          formControlName="description"
+          placeholder="Description (facultatif)"
+        />
+      </div>
+      <div class="buttons">
+        <button type="button" class="cancel-btn" (click)="onCancel()">
+          Annuler
+        </button>
+        <button type="submit" [disabled]="addForm.invalid">
+          <mat-icon>add</mat-icon>
+          <span>Ajouter</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

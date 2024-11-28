@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {TaskDetailModalComponent} from "../task-detail-modal/task-detail-modal.component";
+import {Task} from "../models/task.model";
+import {Status} from "../models/status.model";
 
 @Component({
   selector: 'app-board-task',
@@ -9,6 +11,10 @@ import {TaskDetailModalComponent} from "../task-detail-modal/task-detail-modal.c
   standalone: false
 })
 export class BoardTaskComponent {
+  @Input() task: Task | null = null;
+  @Input() status: Status | null = null;
+
+
 
   constructor(private dialog: MatDialog) {
   }

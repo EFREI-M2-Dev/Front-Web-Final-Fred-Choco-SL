@@ -1,11 +1,11 @@
-<div class="board-task" (click)="openTaskDetail()">
+<div class="board-task" (click)="openTaskDetail()" *ngIf="task && status">
   <div class="label">
-    Nettoyer le grenier
+    {{ task.name }}
   </div>
   <div class="meta">
     <div class="list">
       <div class="state-indicator"></div>
-      <div class="text">À faire</div>
+      <div class="text">{{ status.name }}</div>
     </div>
     <div class="list">
       <div class="fake-profile"></div>
