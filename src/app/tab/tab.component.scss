@@ -1,18 +1,33 @@
 .tab {
   cursor: pointer;
   padding: 10px 20px;
-  margin: 0;
+  margin-right: .125rem;
   display: flex;
   align-items: center;
   font-size: 16px;
   gap: 8px;
-  color: #6a1b9a;
-  background-color: #f8f1fc;
+  background-color: var(--mat-sys-secondary-container);
+  color: var(--mat-sys-on-secondary-container);
   transition: all 0.3s ease;
 
+  &:hover {
+    background-color: var(--mat-sys-secondary-fixed-dim);
+  }
+
   &.active {
-    background-color: #6a1b9a;
-    color: white;
+    background-color: var(--mat-sys-background);
+
+    &:hover {
+      background-color: var(--mat-sys-background);
+    }
+  }
+
+  &.rounded-left {
+    border-top-left-radius: var(--mat-sys-corner-extra-small);
+  }
+
+  &.rounded-right {
+    border-top-right-radius: var(--mat-sys-corner-extra-small);
   }
 
   mat-icon {

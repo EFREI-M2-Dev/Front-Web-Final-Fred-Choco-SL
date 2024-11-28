@@ -1,78 +1,91 @@
 <section id="register">
-    <app-navbar class="navbar"></app-navbar>
-    <div class="container">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div class="logo">
-                <svg-icon src="assets/logo.svg"></svg-icon>
-                <span>Register</span>
-            </div>
+  <app-navbar class="navbar"></app-navbar>
+  <div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" data-form-type="register">
+      <div class="logo">
+        <svg-icon src="assets/logo.svg"></svg-icon>
+        <span>Inscription</span>
+      </div>
 
-            <!-- Surname Field -->
-            <div>
-                <input
-                        type="text"
-                        formControlName="surname"
-                        placeholder="Surname"
-                />
-                <div *ngIf="registerForm.get('surname')?.invalid && registerForm.get('surname')?.touched">
-                    <small>Surname is required and must be at least 2 characters long.</small>
-                </div>
-            </div>
+      <!-- Surname Field -->
+      <mat-form-field class="input">
+        <mat-label>Nom de famille</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="surname"
+          placeholder="Nom de famille"
+          data-form-type="name,last"
+        />
+        @if (registerForm.get('surname')?.invalid && registerForm.get('surname')?.touched) {
+          <mat-error>Le nom de famille est requis et doit comporter au moins 2 caractères.</mat-error>
+        }
+      </mat-form-field>
 
-            <!-- Name Field -->
-            <div>
-                <input
-                        type="text"
-                        formControlName="name"
-                        placeholder="Name"
-                />
-                <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
-                    <small>Name is required and must be at least 2 characters long.</small>
-                </div>
-            </div>
+      <!-- Name Field -->
+      <mat-form-field class="input">
+        <mat-label>Prénom</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="name"
+          placeholder="Prénom"
+          data-form-type="name,first"
+        />
+        @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
+          <mat-error>Le prénom est requis et doit comporter au moins 2 caractères.</mat-error>
+        }
+      </mat-form-field>
 
-            <!-- Email Field -->
-            <div>
-                <input
-                        type="email"
-                        formControlName="email"
-                        placeholder="Email"
-                />
-                <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-                    <small>Email is required and must be a valid email address.</small>
-                </div>
-            </div>
+      <!-- Email Field -->
+      <mat-form-field class="input">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          data-form-type="email"
+        />
+        @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+          <mat-error>L'email est requis et doit être une adresse email valide.</mat-error>
+        }
+      </mat-form-field>
 
-            <!-- Password Field -->
-            <div>
-                <input
-                        type="password"
-                        formControlName="password"
-                        placeholder="Password"
-                />
-                <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-                    <small>Password is required and must be at least 6 characters long.</small>
-                </div>
-            </div>
+      <!-- Password Field -->
+      <mat-form-field class="input">
+        <mat-label>Mot de passe</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Mot de passe"
+          data-form-type="password"
+        />
+        @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+          <mat-error>Le mot de passe est requis et doit comporter au moins 6 caractères.</mat-error>
+        }
+      </mat-form-field>
 
-            <!-- Confirm Password Field -->
-            <div>
-                <input
-                        type="password"
-                        formControlName="confirmPassword"
-                        placeholder="Confirm Password"
-                />
-                <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
-                    <small>Confirm Password is required and must match the password.</small>
-                </div>
-            </div>
+      <!-- Confirm Password Field -->
+      <mat-form-field class="input">
+        <mat-label>Confirmer le mot de passe</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirmer le mot de passe"
+          data-form-type="password,confirmation"
+        />
+        @if (registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched) {
+          <mat-error>La confirmation du mot de passe est requise et doit correspondre au mot de passe.</mat-error>
+        }
+        @if (registerForm.errors?.['passwordMismatch'] && registerForm.dirty) {
+          <mat-error>Les mots de passe ne correspondent pas.</mat-error>
+        }
+      </mat-form-field>
 
-            <!-- Password Mismatch -->
-            <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.dirty">
-                <small>Passwords do not match.</small>
-            </div>
-
-            <button type="submit" [disabled]="registerForm.invalid">Register</button>
-        </form>
-    </div>
+      <button type="submit" mat-flat-button [disabled]="registerForm.invalid">S'inscrire</button>
+    </form>
+  </div>
 </section>

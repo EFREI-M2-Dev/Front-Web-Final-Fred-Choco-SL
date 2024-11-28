@@ -1,4 +1,5 @@
-<div class="tab" [ngClass]="{ 'active': isActive }" (click)="activateTab()">
-  <mat-icon>{{ tabIcon }}</mat-icon>
-  <span>{{ tabTitle }}</span>
+<div class="tab" [ngClass]="{ 'active': isActive, 'rounded-left': roundedLeft, 'rounded-right': roundedRight }"
+     (click)="activateTab()">
+  <mat-icon>{{ icon }}</mat-icon>
+  <span>{{ title }}</span>
 </div>

@@ -29,6 +29,8 @@ import {BoardTaskComponent} from "./board-task/board-task.component";
 import {ConfirmDeleteModalComponent} from "./confirm-delete-modal/confirm-delete-modal.component";
 import {AddTaskModalComponent} from "./add-task-modal/add-task-modal.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {MatError, MatFormField} from "@angular/material/form-field";
+import {MatInput, MatLabel} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -61,6 +63,10 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     AngularSvgIconModule.forRoot(),
     MatTabsModule,
     MatIconModule,
+    MatFormField,
+    MatInput,
+    MatError,
+    MatLabel,
     DragDropModule
   ],
   providers: [

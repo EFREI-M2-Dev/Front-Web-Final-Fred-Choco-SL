@@ -1,8 +1,8 @@
 .avatar {
-  width: 50px; /* Taille du cercle */
-  height: 50px;
-  background-color: #4d3b7d; /* Couleur de fond (ajustez selon votre thème) */
-  color: white; /* Couleur du texte */
+  width: 4rem; /* Taille du cercle */
+  height: 4rem;
+  background-color: var(--mat-sys-primary); /* Couleur de fond (ajustez selon votre thème) */
+  color: var(--mat-sys-on-primary); /* Couleur du texte */
   border-radius: 50%; /* Rend la forme circulaire */
   display: flex; /* Permet d'aligner le contenu */
   align-items: center; /* Centre verticalement le texte */
@@ -10,6 +10,6 @@
   font-size: 1.2rem; /* Taille de la police */
   font-weight: bold; /* Met le texte en gras */
   text-transform: uppercase; /* Transforme les lettres en majuscules */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : ajoute une ombre */
+  box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.1); /* Optionnel : ajoute une ombre */
   user-select: none; /* Empêche la sélection du texte */
 }
