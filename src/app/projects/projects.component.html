@@ -2,7 +2,17 @@
 <app-header [headerTitle]="headerTopLine" [headerTopLine]="headerTopLine"></app-header>
 
 <div class="container projects-wrapper">
-  <h3>Mes projets</h3>
+  <div class="projects-wrapper-add">
+    <h3>Mes projets</h3>
+    <button
+      mat-fab
+      aria-label="Add project"
+      class="add-btn"
+      (click)="openAddProjectModal()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 
   <div *ngIf="isLoading" class="loader">
     Chargement des projets...
@@ -16,6 +26,7 @@
     <app-project-card
       *ngFor="let project of projects"
       [project]="project"
+      (projectDeleted)="loadProjects()"
     ></app-project-card>
   </div>
 </div>

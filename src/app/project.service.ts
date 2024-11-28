@@ -31,4 +31,12 @@ export class ProjectService {
     return this.http.get<Project>(`${this.apiUrl}/projects/${projectId}`);
   }
 
+  createProject(project: Partial<Project>): Observable<Project> {
+    return this.http.post<Project>(`${this.apiUrl}/project`, project);
+  }
+
+  deleteProject(projectId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/projects/${projectId}`);
+  }
+
 }

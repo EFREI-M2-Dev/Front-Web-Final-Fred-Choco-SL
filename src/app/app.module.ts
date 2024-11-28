@@ -24,6 +24,9 @@ import {BoardColumnComponent} from "./board-column/board-column.component";
 import {RouterModule} from "@angular/router";
 import {LoaderComponent} from "./loader/loader.component";
 import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
+import {ProjectAddModalComponent} from "./project-add-modal/project-add-modal.component";
+import {BoardTaskComponent} from "./board-task/board-task.component";
+import {ConfirmDeleteModalComponent} from "./confirm-delete-modal/confirm-delete-modal.component";
 
 @NgModule({
   declarations: [
@@ -40,6 +43,10 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@ang
     LoaderComponent,
     ProjectCardComponent,
     BoardComponent,
+    BoardColumnComponent,
+    ProjectAddModalComponent,
+    BoardTaskComponent,
+    ConfirmDeleteModalComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,6 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@ang
     AngularSvgIconModule.forRoot(),
     MatTabsModule,
     MatIconModule,
-    BoardColumnComponent
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

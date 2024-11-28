@@ -2,6 +2,16 @@
   <div class="header">
     <button
       mat-fab
+      *ngIf="!isEditing"
+      color="warn"
+      aria-label="Delete project"
+      (click)="deleteProject()"
+      class="delete-btn"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button
+      mat-fab
       aria-label="Edit project"
       *ngIf="!isEditing"
       (click)="enableEdit()"

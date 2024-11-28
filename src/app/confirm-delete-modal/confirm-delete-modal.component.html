@@ -1,0 +1,12 @@
+<div class="confirm-delete-modal">
+  <div class="modal-header">
+    <h2>Confirmer la suppression</h2>
+  </div>
+  <div class="modal-body">
+    <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+  </div>
+  <div class="modal-actions">
+    <button mat-button (click)="cancel()">Annuler</button>
+    <button mat-raised-button class="error" (click)="confirm()">Supprimer</button>
+  </div>
+</div>

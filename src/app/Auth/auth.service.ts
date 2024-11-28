@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {User} from "../login-page/login-page.component";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class AuthService {
   private userSubject = new BehaviorSubject<User | null>(null);
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
 
-  constructor() {
+  constructor(private router: Router) {
     this.loadAuthFromStorage();
   }
 
@@ -51,9 +52,11 @@ export class AuthService {
   }
 
   // Log out the user
-  logout() {
+  async logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('userDisplayName');
+
+    await this.router.navigate(['/']);
 
     this.userSubject.next(null);
     this.isLoggedInSubject.next(false);

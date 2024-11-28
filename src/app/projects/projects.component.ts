@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../Auth/auth.service';
-import { ProjectService } from '../project.service';
+import {Component} from '@angular/core';
+import {AuthService} from '../Auth/auth.service';
+import {ProjectService} from '../project.service';
 import {Project} from "../models/project.model";
+import {MatDialog} from "@angular/material/dialog";
+import {ProjectAddModalComponent} from "../project-add-modal/project-add-modal.component";
 
 @Component({
   selector: 'app-projects',
@@ -16,7 +18,8 @@ export class ProjectsComponent {
 
   constructor(
     private authService: AuthService,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private dialog: MatDialog
   ) {
     this.authService.getUser().subscribe((user) => {
       if (user) {
@@ -38,11 +41,25 @@ export class ProjectsComponent {
       },
       error: (error) => {
         console.error('Erreur lors de la récupération des projets:', error);
+        if (error.status === 401) {
+          this.authService.logout().then(() => {
+            console.log('Déconnexion réussie');
+          });
+        }
       },
       complete: () => {
         console.log('Récupération des projets terminée');
       }
     });
-
   }
+
+  openAddProjectModal() {
+    console.log('Ouverture de la popup d\'ajout de projet');
+    const dialogRef = this.dialog.open(ProjectAddModalComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      // Rafraîchir les projets après la fermeture du modal
+      this.loadProjects();
+    });
+  }
+
 }

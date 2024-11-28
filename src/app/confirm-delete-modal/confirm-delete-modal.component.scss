@@ -1,0 +1,31 @@
+.confirm-delete-modal {
+  color: var(--mat-sys-on-primary-fixed-variant);
+  padding: 1em;
+  .modal-header {
+    text-align: center;
+    margin-bottom: 16px;
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  .modal-body {
+    text-align: center;
+    p {
+      font-size: 16px;
+    }
+  }
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+    button {
+      min-width: 100px;
+    }
+
+    .error {
+      background-color: var(--mat-sys-error);
+      color: var(--mat-sys-on-error);
+    }
+  }
+}

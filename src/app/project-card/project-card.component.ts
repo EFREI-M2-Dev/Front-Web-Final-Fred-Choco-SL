@@ -1,7 +1,9 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Project} from '../models/project.model';
 import {ProjectService} from '../project.service';
+import {ConfirmDeleteModalComponent} from "../confirm-delete-modal/confirm-delete-modal.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-project-card',
@@ -11,22 +13,29 @@ import {ProjectService} from '../project.service';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() project!: Project; // Le projet à afficher
+  @Output() projectDeleted = new EventEmitter<void>();
 
   editForm!: FormGroup; // Formulaire réactif
   isEditing = false; // Indique si on est en mode édition
   @ViewChild('firstInput') firstInput!: ElementRef;
 
   constructor(
-    private fb: FormBuilder, // FormBuilder pour créer les formulaires
-    private projectService: ProjectService
+    private formBuilder: FormBuilder, // FormBuilder pour créer les formulaires
+    private projectService: ProjectService,
+    private dialog: MatDialog
   ) {
+
+    this.editForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(6)]],
+      description: [''],
+    });
   }
 
   ngOnInit(): void {
     // Initialiser le formulaire avec les données du projet
-    this.editForm = this.fb.group({
-      name: [this.project.name], // Champ nom
-      description: [this.project.description], // Champ description
+    this.editForm.setValue({
+      name: this.project.name,
+      description: this.project.description,
     });
   }
 
@@ -51,8 +60,8 @@ export class ProjectCardComponent implements OnInit {
   reloadProject() {
     this.projectService.getProjectById(this.project.id).subscribe({
       next: (project) => {
-        this.project = project; // Mettre à jour avec les données actualisées du serveur
-        this.isEditing = false; // Quitter le mode édition
+        this.project = project;
+        this.isEditing = false;
       },
       error: (err) => {
         console.error('Erreur lors du rechargement du projet:', err);
@@ -75,6 +84,25 @@ export class ProjectCardComponent implements OnInit {
         },
       });
     }
+  }
+
+  deleteProject() {
+    const dialogRef = this.dialog.open(ConfirmDeleteModalComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Si l'utilisateur confirme, on appelle le service pour supprimer
+        this.projectService.deleteProject(this.project.id).subscribe({
+          next: () => {
+            console.log('Projet supprimé avec succès');
+            this.projectDeleted.emit();
+          },
+          error: (err) => {
+            console.error('Erreur lors de la suppression du projet:', err);
+          },
+        });
+      }
+    });
   }
 
 }
