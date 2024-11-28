@@ -21,7 +21,14 @@
       cdkDrag
       [cdkDragData]="task"
     >
-      <app-board-task [task]="task" [status]="status"></app-board-task>
+      <app-board-task
+        [task]="task"
+        [status]="status"
+        [statuses]="statuses"
+        [currentProject]="currentProject"
+        (taskDeleted)="reloadLocalTasks()"
+        (taskUpdated)="reloadAllTasks()"
+      ></app-board-task>
     </div>
   </div>
 

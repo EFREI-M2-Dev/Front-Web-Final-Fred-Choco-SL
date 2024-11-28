@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from "@angular/material/button";
+import {MatButtonModule, MatFabButton} from "@angular/material/button";
 import {ButtonComponent} from "./button/button.component";
 import {NavbarComponent} from './navbar/navbar.component';
 import {LoginPageComponent} from './login-page/login-page.component';
@@ -17,7 +17,7 @@ import {HeaderComponent} from "./header/header.component";
 import {ProjectsComponent} from "./projects/projects.component";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {MatTabsModule} from "@angular/material/tabs";
-import {MatIconModule} from "@angular/material/icon";
+import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {TabComponent} from "./tab/tab.component";
 import {BoardComponent} from "./board/board.component";
 import {BoardColumnComponent} from "./board-column/board-column.component";
@@ -29,6 +29,7 @@ import {BoardTaskComponent} from "./board-task/board-task.component";
 import {ConfirmDeleteModalComponent} from "./confirm-delete-modal/confirm-delete-modal.component";
 import {AddTaskModalComponent} from "./add-task-modal/add-task-modal.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {TaskDetailModalComponent} from "./task-detail-modal/task-detail-modal.component";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     ProjectAddModalComponent,
     BoardTaskComponent,
     ConfirmDeleteModalComponent,
-    AddTaskModalComponent
+    AddTaskModalComponent,
+    TaskDetailModalComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     AngularSvgIconModule.forRoot(),
     MatTabsModule,
     MatIconModule,
-    DragDropModule
+    DragDropModule,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

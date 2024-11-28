@@ -49,10 +49,10 @@
       <!-- Mode édition -->
       <div *ngIf="isEditing">
         <div class="title">
-          <input #firstInput formControlName="name" placeholder="Nom du projet" />
+          <input #firstInput formControlName="name" placeholder="Nom du projet" (click)="stopPropagation($event)" />
         </div>
         <div class="desc">
-          <input formControlName="description" placeholder="Description du projet" />
+          <input formControlName="description" placeholder="Description du projet"  (click)="stopPropagation($event)"/>
         </div>
       </div>
     </form>

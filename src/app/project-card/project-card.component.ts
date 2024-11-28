@@ -72,7 +72,7 @@ export class ProjectCardComponent implements OnInit {
       error: (err) => {
         console.error('Erreur lors du rechargement du projet:', err);
 
-        if(err.message.includes("expired token")) this.authService.logout();
+        if(err.error.message.includes("expired token")) this.authService.logout();
       },
     });
   }
@@ -90,7 +90,7 @@ export class ProjectCardComponent implements OnInit {
         },
         error: (err) => {
           console.error('Erreur lors de la mise à jour du projet:', err);
-          if(err.message.includes("expired token")) this.authService.logout();
+          if(err.error.message.includes("expired token")) this.authService.logout();
         },
       });
     }
@@ -110,7 +110,7 @@ export class ProjectCardComponent implements OnInit {
           },
           error: (err) => {
             console.error('Erreur lors de la suppression du projet:', err);
-            if(err.message.includes("expired token")) this.authService.logout();
+            if(err.error.message.includes("expired token")) this.authService.logout();
           },
         });
       }
@@ -119,6 +119,10 @@ export class ProjectCardComponent implements OnInit {
 
   async goToProject() {
     await this.router.navigate(['/board', this.project.id]);
+  }
+
+  stopPropagation(event: MouseEvent) {
+    event.stopPropagation();
   }
 
 }

@@ -1,4 +1,11 @@
 .avatar {
+
+  &.small {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+  }
   width: 4rem; /* Taille du cercle */
   height: 4rem;
   background-color: var(--mat-sys-primary); /* Couleur de fond (ajustez selon votre thème) */

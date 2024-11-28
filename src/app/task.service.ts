@@ -21,4 +21,12 @@ export class TaskService {
   updateTask(projectId: number, taskId: number, task: Partial<Task>): Observable<Task> {
     return this.http.put<Task>(`${this.apiUrl}/${projectId}/tasks/${taskId}`, task);
   }
+
+  deleteTask(projectId: number, taskId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${projectId}/tasks/${taskId}`);
+  }
+
+  getTaskById(projectId: number, taskId: number): Observable<Task> {
+    return this.http.get<Task>(`${this.apiUrl}/${projectId}/tasks/${taskId}`);
+  }
 }

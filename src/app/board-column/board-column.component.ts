@@ -7,6 +7,7 @@ import {CdkDragDrop} from "@angular/cdk/drag-drop";
 import {ProjectService} from "../project.service";
 import {TaskService} from "../task.service";
 import {Task} from "../models/task.model";
+import {AuthService} from "../Auth/auth.service";
 
 @Component({
   selector: 'app-board-column',
@@ -18,12 +19,16 @@ export class BoardColumnComponent {
   @Input() status: Status | null = null;
   @Input() currentProject: Project | null = null;
   @Output() taskCreated = new EventEmitter<void>();
+  @Output() taskUpdated = new EventEmitter<void>();
   @Input() connectedLists: string[] = []; // Pour connecter les colonnes
+  @Input() statuses: Status[] = [];
 
 
   constructor(
     private dialog: MatDialog,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private projectService: ProjectService,
+    private authService: AuthService
   ) {
   }
 
@@ -37,7 +42,7 @@ export class BoardColumnComponent {
   addTask() {
     const dialogRef = this.dialog.open(AddTaskModalComponent, {
       width: '500px',
-      data: { status: this.status, currentProject: this.currentProject },
+      data: {status: this.status, currentProject: this.currentProject},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -60,15 +65,33 @@ export class BoardColumnComponent {
     const newStatusId = this.status.id;
 
     if (task.statusId !== newStatusId) {
-      this.taskService.updateTask(this.currentProject.id, task.id, { statusId: newStatusId }).subscribe({
+      this.taskService.updateTask(this.currentProject.id, task.id, {statusId: newStatusId}).subscribe({
         next: () => {
           console.log(`Task ${task.id} moved to status ${newStatusId}`);
           this.taskCreated.emit();
         },
         error: (err) => {
           console.error('Error updating task status:', err);
+          if (err.error.message.includes("expired token")) this.authService.logout();
         },
       });
     }
+  }
+
+  reloadLocalTasks() {
+    if (!this.currentProject) return;
+    this.projectService.getProjectById(this.currentProject.id).subscribe({
+      next: (project) => {
+        this.currentProject = project;
+      },
+      error: (err) => {
+        console.error('Error reloading tasks:', err);
+        if (err.error.message.includes("expired token")) this.authService.logout();
+      },
+    });
+  }
+
+  reloadAllTasks() {
+    this.taskUpdated.emit();
   }
 }

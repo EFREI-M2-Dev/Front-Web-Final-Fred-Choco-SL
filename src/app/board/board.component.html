@@ -2,11 +2,13 @@
 <app-header [headerTitle]="headerTitle" [headerTopLine]="headerTopLine"></app-header>
 <div class="container board-wrapper" *ngIf="statuses.length > 0">
   <app-board-column
+    [statuses]="statuses"
     *ngFor="let status of statuses"
     [status]="status"
     [currentProject]="currentProject"
     [connectedLists]="connectedLists"
     (taskCreated)="reloadProject()"
+    (taskUpdated)="reloadProject()"
   />
 </div>
 
