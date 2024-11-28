@@ -4,25 +4,30 @@
       <div class="logo">
         <span>Créer un projet</span>
       </div>
-      <div>
+      <mat-form-field class="input">
+        <mat-label>Nom du projet</mat-label>
         <input
+          matInput
           type="text"
           formControlName="name"
           placeholder="Nom du projet"
+          data-form-type="other"
         />
-        <div *ngIf="addForm?.get('name')?.invalid && addForm?.get('name')?.touched">
-          <small>Le nom est requis et doit faire au moins 6 caractères.</small>
-        </div>
-      </div>
-      <div>
+        @if (addForm?.get('name')?.invalid && addForm?.get('name')?.touched) {
+          <mat-error>Le nom est requis et doit faire au moins 6 caractères.</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
         <input
+          matInput
           type="text"
           formControlName="description"
           placeholder="Description"
         />
-      </div>
+      </mat-form-field>
 
-      <button type="submit" [disabled]="addForm.invalid">
+      <button type="submit" mat-flat-button [disabled]="addForm.invalid">
         <mat-icon>add</mat-icon>
         <span>Créer le projet</span>
       </button>

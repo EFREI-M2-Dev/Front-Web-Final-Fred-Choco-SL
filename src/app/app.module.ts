@@ -27,6 +27,8 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@ang
 import {ProjectAddModalComponent} from "./project-add-modal/project-add-modal.component";
 import {BoardTaskComponent} from "./board-task/board-task.component";
 import {ConfirmDeleteModalComponent} from "./confirm-delete-modal/confirm-delete-modal.component";
+import {MatError, MatFormField} from "@angular/material/form-field";
+import {MatInput, MatLabel} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -58,6 +60,10 @@ import {ConfirmDeleteModalComponent} from "./confirm-delete-modal/confirm-delete
     AngularSvgIconModule.forRoot(),
     MatTabsModule,
     MatIconModule,
+    MatFormField,
+    MatInput,
+    MatError,
+    MatLabel
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
