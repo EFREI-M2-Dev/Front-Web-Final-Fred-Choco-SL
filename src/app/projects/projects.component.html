@@ -1,5 +1,8 @@
 <app-navbar [isHomePage]="false"></app-navbar>
-<app-header [headerTitle]="headerTopLine" [headerTopLine]="headerTopLine"></app-header>
+<app-header headerTitle="Bon retour parmi nous !" [headerTopLine]="headerTopLine">
+  <app-tab title="Projets" icon="format_list_bulleted" [isActive]="true" [roundedLeft]="true"/>
+  <app-tab title="Paramètres" icon="settings" [isActive]="false" [roundedRight]="true"/>
+</app-header>
 
 <div class="container projects-wrapper">
   <div class="projects-wrapper-add">
