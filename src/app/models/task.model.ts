@@ -3,5 +3,11 @@ export interface Task {
   name: string;
   description: string;
   statusId: number;
+  assignee: {
+    id: number;
+    name: string;
+    surname: string;
+    email: string;
+  }
 }
 

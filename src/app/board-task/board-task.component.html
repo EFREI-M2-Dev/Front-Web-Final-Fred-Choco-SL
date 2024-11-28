@@ -8,8 +8,7 @@
       <div class="text">{{ status.name }}</div>
     </div>
     <div class="list">
-      <div class="fake-profile"></div>
-      <div class="fake-profile"></div>
+      <app-avatar *ngIf="memberAssignee" [isSessionUser]="false" [name]="memberAssignee.name" [surname]="memberAssignee.surname"></app-avatar>
     </div>
   </div>
 </div>

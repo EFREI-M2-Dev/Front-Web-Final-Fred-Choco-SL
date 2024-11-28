@@ -1,41 +1,60 @@
-<div class="task-detail-modal">
+<div class="project-modal">
   <div class="modal">
-    <div class="content-wrapper">
+    <form [formGroup]="editForm">
       <div class="header">
-        <div class="meta">
-          <div class="title">
-            Nettoyer le grenier
-          </div>
-          <div class="desc">
-            <div>Dans la liste</div>
-            <div class="column-name">À faire</div>
+        <!-- Titre ou champ input en mode édition -->
+        <h1 *ngIf="!isEditing">{{ editForm.get('name')?.value }}</h1>
+        <input
+          *ngIf="isEditing"
+          formControlName="name"
+          class="edit-input"
+          placeholder="Titre de la tâche"
+        />
+
+        <div class="actions">
+          <!-- Boutons d'édition -->
+          <mat-icon *ngIf="!isEditing" class="edit-btn" (click)="enableEdit()">edit</mat-icon>
+          <mat-icon *ngIf="isEditing" class="save-btn" (click)="saveChanges()">check</mat-icon>
+          <mat-icon *ngIf="isEditing" class="cancel-btn" (click)="cancelEdit()">close</mat-icon>
+          <mat-icon *ngIf="!isEditing" class="delete-btn" (click)="deleteTask()">delete</mat-icon>
+          <mat-icon *ngIf="!isEditing" class="close-btn" (click)="closeModal()">close</mat-icon>
+        </div>
+      </div>
+
+      <!-- Statut ou champ select en mode édition -->
+      <span class="list-status">
+        Status:
+              <!-- Use helper function to display status name -->
+        <span *ngIf="!isEditing">{{ getStatusName(editForm.get('statusId')?.value) }}</span>
+              <!-- Select dropdown for editing -->
+        <select *ngIf="isEditing" formControlName="statusId" class="edit-input">
+          <option *ngFor="let stat of data.statuses" [value]="stat.id">{{ stat.name }}</option>
+        </select>
+      </span>
+
+
+      <!-- Détail de l'assignee -->
+      <div class="assignee" *ngIf="assignee">
+        <h3 class="assignee-title">Assignée à</h3>
+        <div class="assignee-detail">
+          <app-avatar [isSessionUser]="false" [name]="assignee.name" [surname]="assignee.surname"></app-avatar>
+          <div class="assignee-col">
+            <span>{{ assignee.name | titlecase }} {{ assignee.surname?.toUpperCase() }}</span>
+            <span>{{ assignee.email }}</span>
           </div>
         </div>
-        <div class="members-wrapper">
-          <div class="text">
-            Membres
-          </div>
-          <div class="list">
-            <div class="fake-profile"></div>
-            <div class="fake-profile"></div>
-          </div>
-        </div>
       </div>
 
-      <div class="content">
-        <div class="title">Description</div>
-        <p>Lorem ipsum dolor sit amet</p>
-      </div>
-    </div>
-
-    <div class="actions-wrapper">
-      <button mat-fab aria-label="Close the modal">
-        <mat-icon>close</mat-icon>
-      </button>
-
-      <div class="actions">
-
-      </div>
-    </div>
+      <!-- Description ou champ textarea en mode édition -->
+      <h3 class="description-title">Description</h3>
+      <p *ngIf="!isEditing" class="description">{{ editForm.get('description')?.value }}</p>
+      <textarea
+        rows="5"
+        *ngIf="isEditing"
+        formControlName="description"
+        class="edit-input"
+        placeholder="Description de la tâche"
+      ></textarea>
+    </form>
   </div>
 </div>

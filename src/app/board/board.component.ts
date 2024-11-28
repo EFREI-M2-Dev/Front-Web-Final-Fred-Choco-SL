@@ -55,7 +55,7 @@ export class BoardComponent {
                 }
               },
               error: (error) => {
-                if (error.message.includes("expired token")) {
+                if (error.error.message.includes("expired token")) {
                   this.authService.logout();
                 } else {
                   this.router.navigate(['/projects']);
@@ -71,7 +71,7 @@ export class BoardComponent {
         },
         error: (error) => {
           console.error('Erreur lors de la récupération du projet:', error);
-          if (error.message.includes("expired token")) this.authService.logout();
+          if (error.error.message.includes("expired token")) this.authService.logout();
         },
         complete: () => {
           console.log('Récupération du projet terminée');
@@ -88,7 +88,7 @@ export class BoardComponent {
       },
       error: (error) => {
         console.error('Erreur lors de la récupération des statuts:', error);
-        if (error.message.includes("expired token")) this.authService.logout();
+        if (error.error.message.includes("expired token")) this.authService.logout();
       },
       complete: () => {
         console.log('Récupération des statuts terminée');
@@ -104,7 +104,7 @@ export class BoardComponent {
       },
       error: (error) => {
         console.error('Erreur lors de la récupération des tâches:', error);
-        if (error.message.includes("expired token")) this.authService.logout();
+        if (error.error.message.includes("expired token")) this.authService.logout();
       },
       complete: () => {
         console.log('Récupération des tâches terminée');

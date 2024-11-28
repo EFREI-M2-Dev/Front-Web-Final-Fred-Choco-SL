@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProjectService} from "../project.service";
 import {MatDialogRef} from "@angular/material/dialog";
+import {AuthService} from "../Auth/auth.service";
 
 @Component({
   selector: 'app-project-add-modal',
@@ -15,6 +16,7 @@ export class ProjectAddModalComponent {
   constructor(
     private formBuilder: FormBuilder,
     private projectService: ProjectService,
+    private authService: AuthService,
     private dialogRef: MatDialogRef<ProjectAddModalComponent>
   ) {
     this.addForm = this.formBuilder.group({
@@ -34,6 +36,7 @@ export class ProjectAddModalComponent {
         },
         error: (err) => {
           console.error('Erreur lors de la mise à jour du projet:', err);
+          if (err.error.message.includes("expired token")) this.authService.logout();
         },
       });
     }
