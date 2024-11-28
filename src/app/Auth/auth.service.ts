@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from "../login-page/login-page.component";
 import {Router} from "@angular/router";
 
@@ -88,5 +88,9 @@ export class AuthService {
       return payload?.id || null; // Remplacez 'id' par la clé exacte utilisée dans votre token
     }
     return null;
+  }
+
+  isLoggedInSync(): boolean {
+    return this.isLoggedInSubject.value;
   }
 }
