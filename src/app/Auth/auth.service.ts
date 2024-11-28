@@ -42,10 +42,12 @@ export class AuthService {
   }
 
   // Log in the user and store the token/user in memory and local storage
-  login(token: string, user: User) {
+  async login(token: string, user: User) {
     localStorage.setItem('token', token);
     const fullName = `${user.name}&&${user.surname}`;
     localStorage.setItem('userDisplayName', fullName);
+
+    await this.router.navigate(['/projects']);
 
     this.userSubject.next(user);
     this.isLoggedInSubject.next(true);
