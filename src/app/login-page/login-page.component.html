@@ -4,30 +4,31 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="logo">
         <svg-icon src="assets/logo.svg"></svg-icon>
-        <span>Login</span>
+        <span>Connexion</span>
       </div>
       <div>
         <input
           type="email"
           formControlName="email"
           placeholder="Email"
+          data-form-type="email"
         />
         <div *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
-          <small>Email is required and must be a valid email address.</small>
+          <small>L'email est requis et doit être une adresse email valide.</small>
         </div>
       </div>
       <div>
         <input
           type="password"
           formControlName="password"
-          placeholder="Password"
+          placeholder="Mot de passe"
+          data-form-type="password"
         />
         <div *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched">
-          <small>Password is required and must be at least 6 characters long.</small>
+          <small>Le mot de passe est requis et doit comporter au moins 6 caractères.</small>
         </div>
       </div>
-      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      <button type="submit" [disabled]="loginForm.invalid">Se connecter</button>
     </form>
   </div>
-
 </section>
