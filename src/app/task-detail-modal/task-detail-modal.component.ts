@@ -52,7 +52,7 @@ export class TaskDetailModalComponent {
     this.editForm.reset({
       name: this.data.currentTask.name,
       description: this.data.currentTask.description,
-      statusId: this.data.statuses.find(status => status.id === this.data.currentTask.statusId)?.name
+      statusId: this.data.currentTask.statusId
     });
   }
 

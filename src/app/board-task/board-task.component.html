@@ -2,13 +2,17 @@
   <div class="label">
     {{ task.name }}
   </div>
+  <div class="desc" [class]="task.description ? '' : 'noDesc'">
+    {{ task.description || 'Pas de description' }}
+  </div>
   <div class="meta">
     <div class="list">
       <div class="state-indicator"></div>
       <div class="text">{{ status.name }}</div>
     </div>
     <div class="list">
-      <app-avatar *ngIf="memberAssignee" [isSessionUser]="false" [name]="memberAssignee.name" [surname]="memberAssignee.surname"></app-avatar>
+      <app-avatar *ngIf="memberAssignee" [isSessionUser]="false" [name]="memberAssignee.name"
+                  [surname]="memberAssignee.surname"></app-avatar>
     </div>
   </div>
 </div>

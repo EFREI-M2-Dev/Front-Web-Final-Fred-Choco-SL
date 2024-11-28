@@ -1,7 +1,6 @@
 .board-task {
   display          : flex;
   flex-direction   : column;
-  gap              : 2rem;
   padding          : 1rem;
   border-radius    : var(--mat-sys-corner-small);
   background-color : var(--mat-sys-surface-container-lowest);
@@ -12,6 +11,19 @@
 
   .label {
     user-select : none;
+    font        : var(--mat-sys-headline-medium);
+    font-weight : bold;
+    font-size   : 1.2rem;
+  }
+
+  .desc {
+    user-select : none;
+    font        : var(--mat-sys-body-medium);
+    margin: .5em 0 1em 0;
+
+    &.noDesc {
+      color: var(--mat-sys-on-surface-variant);
+    }
   }
 
   .meta {
