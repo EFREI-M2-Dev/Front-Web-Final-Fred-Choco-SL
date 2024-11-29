@@ -47,7 +47,8 @@ export class AuthService {
     const fullName = `${user.name}&&${user.surname}`;
     localStorage.setItem('userDisplayName', fullName);
 
-    await this.router.navigate(['/projects']);
+    setTimeout(() => this.router.navigate(['/projects']))
+
 
     this.userSubject.next(user);
     this.isLoggedInSubject.next(true);
@@ -58,7 +59,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('userDisplayName');
 
-    await this.router.navigate(['/']);
+    setTimeout(() => this.router.navigate(['/']))
 
     this.userSubject.next(null);
     this.isLoggedInSubject.next(false);
