@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {Project} from "../../../models/project.model";
-import {ProjectService} from "../../../services/project.service";
+import {Project} from "../../models/project.model";
+import {ProjectService} from "../../services/project.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Status} from "../../../models/status.model";
-import {StatusService} from "../../../services/status.service";
-import {AuthService} from "../../../Auth/auth.service";
+import {Status} from "../../models/status.model";
+import {StatusService} from "../../services/status.service";
+import {AuthService} from "../../Auth/auth.service";
 
 @Component({
   selector: 'app-board',
@@ -47,7 +47,7 @@ export class BoardComponent {
 
                   const projectDate = new Date(project.createdAt);
                   this.headerTitle = project.name;
-                  this.headerTopLine = "Créer le : " + projectDate.toLocaleDateString('fr-FR', {
+                  this.headerTopLine = "Créé le : " + projectDate.toLocaleDateString('fr-FR', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'

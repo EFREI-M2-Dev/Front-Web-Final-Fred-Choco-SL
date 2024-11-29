@@ -19,7 +19,7 @@ import {ProjectCardComponent} from "./components/project/project-card/project-ca
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {TabComponent} from "./components/tab/tab.component";
-import {BoardComponent} from "./components/board/board/board.component";
+import {BoardComponent} from "./pages/board/board.component";
 import {BoardColumnComponent} from "./components/board/board-column/board-column.component";
 import {RouterModule} from "@angular/router";
 import {LoaderComponent} from "./components/loader/loader.component";
