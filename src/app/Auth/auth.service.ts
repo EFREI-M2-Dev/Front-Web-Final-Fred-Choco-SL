@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {User} from "../login-page/login-page.component";
+import {User} from "../pages/login-page/login-page.component";
 import {Router} from "@angular/router";
 
 @Injectable({

@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {IndexComponent} from './index/index.component';
-import {LoginPageComponent} from './login-page/login-page.component';
-import {RegisterPageComponent} from './register-page/register-page.component';
-import {ProjectsComponent} from './projects/projects.component';
-import {BoardComponent} from './board/board.component';
+import {IndexComponent} from './pages/index/index.component';
+import {LoginPageComponent} from './pages/login-page/login-page.component';
+import {RegisterPageComponent} from './pages/register-page/register-page.component';
+import {ProjectsComponent} from './pages/projects/projects.component';
+import {BoardComponent} from './components/board/board/board.component';
 import {GuestGuard} from "./Auth/guest.guard";
 import {AuthenticatedGuard} from "./Auth/authenticated.guard";
 

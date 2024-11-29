@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LoaderService} from "./loader.service";
+import {LoaderService} from "./services/loader.service";
 import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from "@angular/router";
 
 @Component({
